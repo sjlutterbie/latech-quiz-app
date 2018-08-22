@@ -7,11 +7,11 @@ Lists and tracks the project requirements and user stories for this app.
 ## User experience requirements
 
 - [ ] **The starting screen should have a button that users can click to start the quiz.**
-  - [ ] When the user loads the `quiz URL`, it loads a `starting screen`.
-  - [ ] The `starting screen` has a `Start button`.
+  - [ ] When the user loads the `quiz URL`, it loads the `quiz interface` and `starting display`.
+  - [ ] The `starting display` has a `Start button`.
     - [ ] When the `Start button` is pressed:
-      - [ ] The `starting screen` disappears.
-      - [ ] The first `quiz question` appears.
+      - [ ] The `starting display` disappears.
+      - [ ] The first `quiz form` appears.
 - [ ] **Users should be prompted through a series of at least 5 multiple choice questions they can answer.**
   - [ ] **Users should be asked 1 question after the other.**
   - [ ] **Users should only be prompted with 1 question at a time.**
@@ -25,10 +25,10 @@ Lists and tracks the project requirements and user stories for this app.
 - [ ] **Upon submitting an answer, users should:**
   - [ ] **Receive textual feedback about their answer.**
     - [ ] Upon submitting an answer via the `quiz form`:
-      - [ ] The `quiz question` disappears.
+      - [ ] The `quiz form` disappears.
       - [ ] A `question feedback display` appears.
     - [ ] **If they were incorrect, they should be told the correct answer.**
-      - [ ] The 'question feedback display' explains the correct answer.
+      - [ ] The `question feedback display` explains the correct answer.
   - [ ] **Be moved to the next question (or interact with an element to move on)**
     - [ ] The `question feedback display` includes a `Next question button`.
 - [ ] **Users should be shown their overall score at the end of the quiz.**
@@ -38,7 +38,7 @@ Lists and tracks the project requirements and user stories for this app.
     - [ ] The percentage of questions answered correctly.
 - [ ] **Users should be able to start a new quiz.**
   - [ ] On the `Final results display` there is a `Start new quiz button`
-    - [ ] The `Start new quiz` button re-loads the `quiz URL`. 
+    - [ ] The `Start new quiz` button re-loads the `quiz URL`.
 
 ## Technical requirements
 
@@ -47,6 +47,33 @@ Lists and tracks the project requirements and user stories for this app.
 - [ ] **Follow `ally` best practices.**
 - [ ] **Use responsive design.**
 - [ ] **Be fully usable by keyboard.**
+
+## Design requirements
+*Expanding upon the project and technical requirements, and user stories, outlined above.*
+
+ - [ ] There is a `quiz URL`.
+  - [ ] The final quiz is published as a GitHub page.
+- [ ] There is a `quiz interface` which follows HTML responsive design
+- [ ] ... And can display:
+  - [ ] A `user progress element`, which can display:
+    - [ ] Current question number
+    - [ ] Number of correct answers
+    - [ ] Percentage of correct answers
+  - [ ] A `starting screen` which has:
+      - [ ] A `Start button`
+  - [ ] A `quiz form` which has:
+    - [ ] The `question text`
+    - [ ] Four `answer options`
+    - [ ] A `Submit answer` button
+  - [ ] A `question feedback display` which has:
+    - [ ] A `correct/incorrect display`
+    - [ ] The `correct answer text`
+    - [ ] A `Next question button`
+  - [ ] A `Final results display` which has:
+    - [ ] Total questions asked
+    - [ ] Number of correct answers
+    - [ ] Percentage of correct answers
+    - [ ] A `Start new quiz` button
 
 ## Process requirements
 

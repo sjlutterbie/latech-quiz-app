@@ -25,6 +25,14 @@ _Lists, tracks, and develops the various project requirements for this app._
 
 - [ ] Render answer choices in a `<form>`.
 - [ ] Use semantic HTML, along with CSS and jQuery.
-- [ ] Follow `ally` best practices
+- [ ] Follow `ally` best practices.
+- [ ] Use responsive design.
+- [ ] Be fully usable by keyboard.
 
 ## Process requirements
+
+- [ ] Gather content for app.
+  - [ ] Type up questions and answers.
+  - [ ] Gather any images or icons required.
+- [ ] Think about user experiences outlined above, and how your design must make them possible.
+- [ ] Design app using HTML wireframes.

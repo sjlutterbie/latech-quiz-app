@@ -18,6 +18,55 @@
     
   </head>
   <body>
-    <p>Hello, world!</p>
+    <header role="banner">
+      <!-- On small displays, h1 will be center aligned.
+           On large displayes, h1 will be left-aligned -->
+      <h1>LA Tech Startup Quiz</h1>
+
+      <!-- ===USER PROGRESS ELEMENT=== -->
+      <!-- On small displays, user-progress-element' will clear to its own line.
+           On larger displays, it will move the right side of the header -->
+      <div class="user-progress-element">
+        <ul>
+          <li>Question #7</li>
+          <li>Correct: 4 (57%)</li>
+        </ul>
+      </div>
+    </header>
+    <main role="main">
+      
+      <!-- ===STARTING DISPLAY=== -->
+      <div class="starting-display">
+        <!-- This section will include an introduction to the quiz,
+             and a "Start button" -->
+      </div>
+      
+      <!-- ===QUIZ FORM=== -->
+      <div class="quiz-form-container">
+        <form class="quiz-form" required>
+          <!-- This form will display a single quiz question,
+               the answer choices, and a submit button. -->
+        </form>
+      </div>
+      
+      <!-- ===QUESTION FEEDBACK DISPLAY=== -->
+      <div class="question-feedback-display">
+        <!-- This section will include The 'correct/incorrect display',
+             the 'correct answer text', a 'Next question button', and an
+             'End quiz button'. -->
+      </div>
+      
+      <!-- ===FINAL RESULTS DISPLAY=== -->
+      <div class="final-results-display">
+        <!-- This section will display the total questions asked,
+             the number of correct answers, the percentage of correct answers,
+             and a 'Start new quiz' button. -->
+      </div>
+    </main>
   </body>
+  <footer>
+    <!-- This section will display my name and copyright information,
+         an 'Email me icon' that links to my email address, and a 'Github icon'
+         that links to my GitHub profile. -->
+  </footer>
 </html>

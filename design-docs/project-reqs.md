@@ -69,11 +69,16 @@ Lists and tracks the project requirements and user stories for this app.
     - [ ] A `correct/incorrect display`
     - [ ] The `correct answer text`
     - [ ] A `Next question button`
+    - [ ] An `End quiz button`
   - [ ] A `Final results display` which has:
     - [ ] Total questions asked
     - [ ] Number of correct answers
     - [ ] Percentage of correct answers
     - [ ] A `Start new quiz` button
+- [ ] A `site footer` that displays:
+  - [ ] My name and copyright information
+  - [ ] An `Email me icon` that links to my email address.
+  - [ ] A `Github icon` that links to my GitHub profile.
 
 ## Process requirements
 

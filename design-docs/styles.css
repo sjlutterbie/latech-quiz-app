@@ -2,11 +2,21 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 1000px;
+  margin: auto;
+}
+
 /* === SMALL SCREEN LAYOUT === */
 
 header {
   display: flex;
-  flex-direction: row;
   flex-flow: row wrap;
   justify-content: center;
   align-items: stretch;
@@ -20,7 +30,9 @@ header {
     
     h1 {
       text-align: center;
-      font-size: 28px;
+      font-size: 27px;
+      margin: 0px;
+      padding: 10px;
     }
   
   .user-progress-element {
@@ -31,11 +43,53 @@ header {
   
     .user-progress-element ul {
       list-style: none;
-      padding: 0px;
+      padding: 5px;
       text-align: center;
+      margin: 0px;
     }
     
       .user-progress-element li {
         display: inline-block;
         padding: 0px 3px;
       }
+      
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+  padding: 5px;
+  text-align: center;
+  background: #ccc;
+}
+
+/* ===LARGE SCREEN ADJUSTMENTS=== */
+
+@media only screen and (min-width: 600px) {
+  
+  header {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+    h1 {
+      text-align: left;
+    }
+    
+    .user-progress-element {
+      background: #eee; /* Match .site-title for material design continuity */
+    }
+    
+      .user-progress-element ul {
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+      }
+      
+      .user-progress-element li {
+      }
+      
+}

@@ -54,7 +54,7 @@ Lists and tracks the project requirements and user stories for this app.
  - [ ] There is a `quiz URL`.
   - [ ] The final quiz is published as a GitHub page.
 - [X] There is a ~~`quiz interface`~~ `page body` which follows HTML responsive design
-- [ ] ... And can display:
+- [X] ... And can display:
   - [X] A `site header` which contains:
     - [X] The `site title`
     - [X] A `user progress element`, which can display:

@@ -104,6 +104,16 @@ body {
         flex: 1 0 100%;
       }
       
+  /* Question feedback display */
+  
+    .question-feedback-display {
+      width: 90%;
+      max-width: 500px;
+      background-color: #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+      
 /* Footer */
 
 footer {

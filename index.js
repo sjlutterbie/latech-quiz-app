@@ -1,7 +1,5 @@
 'use strict';
 
-// Do you want testing & debugging feedback?
-  const TESTING = true;
 
 //STARTING DISPLAY
 
@@ -9,9 +7,6 @@ function handleStartingDisplay() {
   
   $('.start-quiz-button').on('click', function(event){
     
-    if(TESTING){
-      console.log('The `Start quiz button` was clicked!');
-    }
     
 
         // When "startQuizButton" is pressed:
@@ -39,6 +34,11 @@ function handleStartingDisplay() {
       // This will be used to prevent repeating the same question in a row
     // 4. startingDisplay should disappear
     // 5. "quizForm" should appear    
+    
+    if(TESTING){
+      console.log('The `Start quiz button` was clicked!');
+    }
+
   });
 
 

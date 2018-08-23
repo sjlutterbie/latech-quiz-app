@@ -5,14 +5,11 @@
 
 function handleStartingDisplay() {
   
-  $('.start-quiz-button').on('click', function(event){
+  $('.js-start-quiz-button').on('click', function(event){
     
     //Initialize previous correct answer tracking, to avoid repeat questions
     let prevCorrectAnswer;
-    
-    //Clear the display
-      // I don't think I need to do this, but I'm leaving it here just in case.
-    
+
     // Display a quiz question
     renderQuizDisplay(prevCorrectAnswer);
 
@@ -97,10 +94,8 @@ function renderQuizForm(prevCorrectAnswer) {
 }
 
   function selectQuizOptions(max) {
-    // TODO: This function will select 4 IDs from quizDataGlobal, representing
-    // the four companies to be used
+    // Generates an array of 4 random numbers, without repeating, in a given range.
     
-    // Generates an array of four random numbers, without repeating, in a given range.
     let array = [];
     
     while (array.length < 4) {
@@ -113,8 +108,7 @@ function renderQuizForm(prevCorrectAnswer) {
       
     }
     
-    
-    return array; // TESTING VALUE
+    return array;
     
     if(TESTING) {
       console.log(`"selectQuizOptions" was called.
@@ -127,10 +121,23 @@ function renderQuizForm(prevCorrectAnswer) {
     // TODO: This function selects a correct answer that doesn't match the previous
     // correct answer.
     
-    return 0; //TESTING VALUE
+    let randAnswer = prevCorrectAnswer;
+    
+    // If the new answer is the same as the previous answer...
+    while (randAnswer === prevCorrectAnswer) {
+      // ... generate a new correct answer
+      randAnswer = quizOptions[Math.floor(Math.random() * 4)];
+      
+    }
+    
+    return randAnswer; 
     
     if(TESTING) {
-      console.log(`"selectCorrectAnswer" was called.`);
+      console.log(`"selectCorrectAnswer" was called.
+        Previous Answer: ${prevCorrectAnswer}
+        Possible Answers: ${quizOptions}
+        New Answer: ${randAnswer}
+      `);
     }
   }
   

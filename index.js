@@ -38,8 +38,8 @@ function renderQuizDisplay(prevCorrectAnswer) {
   //Update userProgress.questionNumber to reflect the new question
     userProgressGlobal.questionNumber += 1;
     
-  //Render the "userProgressElement" should be rendered.
-    renderUserProgressElement();
+  //Render the question number
+    renderHeaderQuestionNumber();
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
@@ -239,6 +239,9 @@ function processQuizAnswer(answerVal, correctAnswer) {
 function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   // This function displays quiz item feedback.
   
+  // Update header user score
+  renderHeaderUserScore();
+  
   // Generate response text
   let feedbackText = boolCorrect ?
     `Yes, ${quizDataGlobal[correctAnswer].companyName} is correct!` :
@@ -302,25 +305,53 @@ function handleFeedbackDisplay() {
   
 }
     
-//USER PROGRESS ELEMENT (userProgressElement)
-function renderUserProgressElement() {
-  // When the userProgressElement is rendered:
-    // Question Number = userProgress.questionNumber
-    // Answered correctly = userProgress.correctAnswers
-    // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber - 1)
-      // This adjusts for the fact that questionNumber is advanced one beyond how many questions they've answered.
+//HEADER QUESTION NUMBER AND USER SCORE (userProgressElement)
 
-  if(TESTING) {
-    console.log(`"renderUserProgressElement" was called.`);
+function renderHeaderQuestionNumber() {
+  
+  $('.js-header-question-number').html(`
+  Question #${userProgressGlobal.questionNumber}`);
+  
+  if(TESTING){
+    console.log(`"renderHeaderQuestionNumber" was called.
+      Question #: ${userProgressGlobal.questionNumber}
+    `);
   }
   
 }
+
+function renderHeaderUserScore () {
+  
+  let correctPercentage = ((userProgressGlobal.correctAnswers
+                           /userProgressGlobal.questionNumber)
+                           * 100).toFixed(1);
+
+  
+  let userScoreString = `Correct: ${userProgressGlobal.correctAnswers}`
+                        + `/${userProgressGlobal.questionNumber}`
+                        + ` (${correctPercentage}%)`;
+  
+  $('.js-header-user-score').html(userScoreString);
+  
+  
+  if(TESTING){
+    console.log(`"renderHeaderUserScore" was called.
+      User Score: ${userProgressGlobal.correctAnswers}
+    `);
+  }
+}
+
+
 
 //===========================================================================//
 
 //FINAL RESULTS DISPLAY
 
 function renderFinalResultsDisplay() {
+  
+  // Hide the question number and user score from the top Nav
+  
+  $('.js-user-progress-element').html("");
   
   // Calculate & format percentage correct
   

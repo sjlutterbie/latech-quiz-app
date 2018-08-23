@@ -325,12 +325,21 @@ function renderUserProgressElement() {
   if(!isNaN(percentageCorrect)) {
     percentageCorrectString = `(${percentageCorrect})%`; 
   }
+  
+  // Create userProgressString
+  let userProgressString = "";
+  
+  // Don't display "Correct:..." for the first question
+  if (userProgressGlobal.questionNumber > 1) {
+    userProgressString = `Correct: ${userProgressGlobal.correctAnswers}/`
+                          + `${userProgressGlobal.questionNumber - 1} `
+                          + `${percentageCorrectString}`;
+  }
 
   let userProgressElementInnerHTML = `
     <ul>
       <li>Question #${userProgressGlobal.questionNumber}</li>
-      <li>Correct: ${userProgressGlobal.correctAnswers} 
-        / ${userProgressGlobal.questionNumber - 1} ${percentageCorrectString}</li>
+      <li>${userProgressString}</li>
     </ul>  
   `;
 

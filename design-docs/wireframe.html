@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <!-- ===META INFORMATION=== -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    
+    <!-- ===SITE INFORMATION=== -->
+    <title>LA Tech Startup Quiz Game</title>
+    <meta name="description" content="LA Tech Quiz Game: Test well you know your LA tech startups">
+    
+    <!-- ===STYLESHEETS=== -->
+    <!-- CSS Reset -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <!-- Primary stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+  </head>
+  <body>
+    <header role="banner">
+      <div class="site-title">
+        <h1>LA Tech Startup Quiz</h1>
+      </div>
+
+      <!-- ===USER PROGRESS ELEMENT=== -->
+      <div class="user-progress-element">
+        <ul>
+          <li>Question #7</li>
+          <li>Correct: 4 (57%)</li>
+        </ul>
+      </div>
+    </header>
+    <main role="main">
+      
+      <!-- ===STARTING DISPLAY=== -->
+<!--
+    <div class="starting-display">
+        <p>Welcome message</p>
+        <p>Quiz instructions</p>
+        <button role="button" class="start-button">Start quiz</button>
+    </div>
+-->      
+      <!-- ===QUIZ FORM=== -->
+
+      <div class="quiz-form-container">
+        <h2>Quiz question</h2>
+        <form class="quiz-form" required>
+          <fieldset>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id1">
+                Company 1
+              </input>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id2">
+                Company 2
+              </input>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id3">
+                Company 3
+              </input>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id4">
+                Company 4
+              </input>
+            </label>
+          </fieldset>
+          <input type="submit" class="submitButton"></input>
+        </form>
+      </div>
+
+      
+      <!-- ===QUESTION FEEDBACK DISPLAY=== -->
+<!--
+      <div class="question-feedback-display">
+        <h2>Correct/Incorrect display</h2>
+        <p>Correct answer text</p>
+        <button role="button" class="next-question-button">Next question</button>
+        <button role="button" class="finish-button">Finish quiz</button>
+      </div>
+-->
+      
+      <!-- ===FINAL RESULTS DISPLAY=== -->
+<!--
+      <div class="final-results-display">
+        <h2>Final results</h2>
+        <p>Total questions: 7</p>
+        <p>Correct answers: 4</p>
+        <p>Performance: 57%</p>
+        <button role="button" class="start-button">Start new quiz</button>
+      </div>
+-->
+    </main>
+    <footer>
+      &copy; 2018 Simon Lutterbie
+      <!-- This section will also display an 'Email me icon' that links
+           to my email address, and a 'Github icon' that links to my
+           GitHub profile. -->
+    </footer>
+  </body>
+</html>

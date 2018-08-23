@@ -7,7 +7,7 @@ Lists and tracks the project requirements and user stories for this app.
 ## User experience requirements
 
 - [ ] **The starting screen should have a button that users can click to start the quiz.**
-  - [ ] When the user loads the `quiz URL`, it loads the `quiz interface` and `starting display`.
+  - [ ] When the user loads the `quiz URL`, it loads the ~~`quiz interface`~~ `page body` and `starting display`.
   - [ ] The `starting display` has a `Start button`.
     - [ ] When the `Start button` is pressed:
       - [ ] The `starting display` disappears.
@@ -53,27 +53,37 @@ Lists and tracks the project requirements and user stories for this app.
 
  - [ ] There is a `quiz URL`.
   - [ ] The final quiz is published as a GitHub page.
-- [ ] There is a `quiz interface` which follows HTML responsive design
-- [ ] ... And can display:
-  - [ ] A `user progress element`, which can display:
-    - [ ] Current question number
-    - [ ] Number of correct answers
-    - [ ] Percentage of correct answers
-  - [ ] A `starting screen` which has:
-      - [ ] A `Start button`
-  - [ ] A `quiz form` which has:
-    - [ ] The `question text`
-    - [ ] Four `answer options`
-    - [ ] A `Submit answer` button
-  - [ ] A `question feedback display` which has:
-    - [ ] A `correct/incorrect display`
-    - [ ] The `correct answer text`
-    - [ ] A `Next question button`
-  - [ ] A `Final results display` which has:
-    - [ ] Total questions asked
-    - [ ] Number of correct answers
-    - [ ] Percentage of correct answers
-    - [ ] A `Start new quiz` button
+- [X] There is a ~~`quiz interface`~~ `page body` which follows HTML responsive design
+- [X] ... And can display:
+  - [X] A `site header` which contains:
+    - [X] The `site title`
+    - [X] A `user progress element`, which can display:
+      - [X] Current question number
+      - [X] Number of correct answers
+      - [X] Percentage of correct answers
+  - [X] A `starting screen` which has:
+    - [X] A welcome message and `quiz instructions`
+    - [X] A `Start button`
+  - [X] A `quiz form` which has:
+    - [X] The `question text`
+    - [X] Four `answer options`
+    - [X] A `Submit answer` button
+  - [X] A `question feedback display` which has:
+    - [X] A `correct/incorrect display`
+    - [X] The `correct answer text`
+    - [X] A `Next question button`
+    - [X] An `End quiz button`
+  - [X] A `Final results display` which has:
+    - [X] Total questions askedS
+    - [X] Number of correct answers
+    - [X] Percentage of correct answers
+    - [X] A `Start new quiz` button
+- [X] A `site footer` that displays:
+  - [X] My name and copyright information
+- *Nice To Haves:*
+  - Footer:
+    - [ ] An `Email me icon` that links to my email address.
+    - [ ] A `Github icon` that links to my GitHub profile.
 
 ## Process requirements
 

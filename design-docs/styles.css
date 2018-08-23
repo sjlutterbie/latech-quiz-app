@@ -113,6 +113,17 @@ body {
       padding: 10px;
       text-align: center;
     }
+    
+  /* Final results disply */
+  
+    .final-results-display {
+      width: 90%;
+      max-width: 500px;
+      background-color: #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+
       
 /* Footer */
 

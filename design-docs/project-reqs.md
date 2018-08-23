@@ -68,20 +68,20 @@ Lists and tracks the project requirements and user stories for this app.
     - [X] The `question text`
     - [X] Four `answer options`
     - [X] A `Submit answer` button
-  - [ ] A `question feedback display` which has:
-    - [ ] A `correct/incorrect display`
-    - [ ] The `correct answer text`
-    - [ ] A `Next question button`
-    - [ ] An `End quiz button`
-  - [ ] A `Final results display` which has:
-    - [ ] Total questions asked
-    - [ ] Number of correct answers
-    - [ ] Percentage of correct answers
-    - [ ] A `Start new quiz` button
+  - [X] A `question feedback display` which has:
+    - [X] A `correct/incorrect display`
+    - [X] The `correct answer text`
+    - [X] A `Next question button`
+    - [X] An `End quiz button`
+  - [X] A `Final results display` which has:
+    - [X] Total questions askedS
+    - [X] Number of correct answers
+    - [X] Percentage of correct answers
+    - [X] A `Start new quiz` button
 - [ ] A `site footer` that displays:
   - [X] My name and copyright information
-  - [ ] An `Email me icon` that links to my email address.
-  - [ ] A `Github icon` that links to my GitHub profile.
+  - [ ] *NiceToHave:* An `Email me icon` that links to my email address.
+  - [ ] *NiceToHave:* A `Github icon` that links to my GitHub profile.
 
 ## Process requirements
 

@@ -1,6 +1,5 @@
 'use strict';
 
-
 //STARTING DISPLAY
 
 function handleStartingDisplay() {
@@ -33,8 +32,7 @@ function handleStartingDisplay() {
 //QUIZ DISPLAY (quizDisplay, quizForm)
 
 function renderQuizDisplay(prevCorrectAnswer) {
-  // This renders the .quiz-form.container display. The HTML is generated
-  // as a template string, within which the renderQuizForm function is called.
+  // Advances the quiz game, renders a new quiz question.
   
   //Update userProgress.questionNumber to reflect the new question
     userProgressGlobal.questionNumber += 1;
@@ -64,10 +62,9 @@ function renderQuizDisplay(prevCorrectAnswer) {
 }
 
 function renderQuizForm(prevCorrectAnswer) {
+  //Renders the quizForm within the quizDisplay
   
-  //This function renders the quizForm within the quizDisplay
-  
-  // When quizForm is called to appear:
+  // Select quizOptions to include in this question
   let quizOptions = selectQuizOptions(quizDataGlobal.length);
     
   // Select the correctAnswer
@@ -76,13 +73,15 @@ function renderQuizForm(prevCorrectAnswer) {
   // Create the quizForm innterContent
   let quizFormInnerHTML = `
     <h2>${quizDataGlobal[correctAnswer].companyQuestion}</h2>
-    <fieldset></fieldset>`;
+    <fieldset></fieldset>
+    <input type="submit" class="quiz-submit-button"></input>
+    `;
   
   $('.quiz-form').html(quizFormInnerHTML);
   
-  //Generate quizOptions
+  //Generate quizOptions, which render within the quizForm
     quizOptions.forEach(index => renderQuizOption(index));
-  
+    
   if(TESTING) {
     console.log(`"renderQuizForm" was called.
       - prevCorrectAnswer: ${prevCorrectAnswer}
@@ -93,72 +92,73 @@ function renderQuizForm(prevCorrectAnswer) {
   }
 }
 
-  function selectQuizOptions(max) {
-    // Generates an array of 4 random numbers, without repeating, in a given range.
+function selectQuizOptions(max) {
+  // Generates an array of 4 random numbers, without repeating, in a given range.
+  
+  let array = [];
+  
+  while (array.length < 4) {
+    let rand = Math.floor(Math.random() * max);
     
-    let array = [];
-    
-    while (array.length < 4) {
-      let rand = Math.floor(Math.random() * max);
-      
-      // If the rand isn't in the array, add it.
-      if (!array.includes(rand)){
-        array.push(rand);
-      }
-      
+    // If the rand isn't in the array, add it.
+    if (!array.includes(rand)){
+      array.push(rand);
     }
     
-    return array;
-    
-    if(TESTING) {
-      console.log(`"selectQuizOptions" was called.
-        array: ${array}
-      `);
-    }
   }
   
-  function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
-    // TODO: This function selects a correct answer that doesn't match the previous
-    // correct answer.
+  return array;
+  
+  if(TESTING) {
+    console.log(`"selectQuizOptions" was called.
+      array: ${array}
+    `);
+  }
+}
+  
+function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
+  // TODO: This function selects a correct answer that doesn't match the previous
+  // correct answer.
+  
+  let randAnswer = prevCorrectAnswer;
+  
+  // If the new answer is the same as the previous answer...
+  while (randAnswer === prevCorrectAnswer) {
+    // ... generate a new correct answer
+    randAnswer = quizOptions[Math.floor(Math.random() * 4)];
     
-    let randAnswer = prevCorrectAnswer;
-    
-    // If the new answer is the same as the previous answer...
-    while (randAnswer === prevCorrectAnswer) {
-      // ... generate a new correct answer
-      randAnswer = quizOptions[Math.floor(Math.random() * 4)];
-      
-    }
-    
-    return randAnswer; 
-    
-    if(TESTING) {
-      console.log(`"selectCorrectAnswer" was called.
-        Previous Answer: ${prevCorrectAnswer}
-        Possible Answers: ${quizOptions}
-        New Answer: ${randAnswer}
-      `);
-    }
   }
   
-  function renderQuizOption(index) {
-    // This function renders the label->input HTML code for a single quizOption
+  return randAnswer; 
+  
+  if(TESTING) {
+    console.log(`"selectCorrectAnswer" was called.
+      Previous Answer: ${prevCorrectAnswer}
+      Possible Answers: ${quizOptions}
+      New Answer: ${randAnswer}
+    `);
+  }
+}
+  
+function renderQuizOption(index) {
+  // This function renders the label->input HTML code for a single quizOption
 
-      let quizOptionInnerHTML = `
-        <label class="quiz-option">
-          <input type="radio" name="answer" value="${index}">
-            ${quizDataGlobal[index].companyName}
-          </input>
-        </label>
-      `
-      $('fieldset').append(quizOptionInnerHTML);
+    let quizOptionInnerHTML = `
+      <label class="quiz-option" for="${index}">
+        <input type="radio" name="answer" id="${index}" value="${index}">
+          ${quizDataGlobal[index].companyName}
+        </input>
+      </label>
+    `
     
-    if(TESTING) {
-      console.log(`"renderQuizOption" was called.
-      - index: ${index}`);
-    }  
-    
-  }
+    $('fieldset').append(quizOptionInnerHTML);
+  
+  if(TESTING) {
+    console.log(`"renderQuizOption" was called.
+    - index: ${index}`);
+  }  
+  
+}
 
 //===========================================================================//
 

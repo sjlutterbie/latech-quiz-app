@@ -34,17 +34,40 @@
     <main role="main">
       
       <!-- ===STARTING DISPLAY=== -->
-      <div class="starting-display">
+<!--
+    <div class="starting-display">
         <p>Welcome message</p>
         <p>Quiz instructions</p>
         <button role="button" class="start-button">Start quiz</button>
     </div>
-      
+-->      
       <!-- ===QUIZ FORM=== -->
       <div class="quiz-form-container">
+        <h2>Quiz question</h2>
         <form class="quiz-form" required>
-          <!-- This form will display a single quiz question,
-               the answer choices, and a submit button. -->
+          <fieldset>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id1">
+                Company 1
+              </input>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id2">
+                Company 2
+              </input>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id3">
+                Company 3
+              </input>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="answer" value="id4">
+                Company 4
+              </input>
+            </label>
+          </fieldset>
+          <input type="submit" class="submitButton"></input>
         </form>
       </div>
       

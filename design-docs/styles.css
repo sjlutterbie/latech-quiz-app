@@ -75,8 +75,35 @@ body {
       padding: 10px;
       text-align: center;
     }
-
-
+    
+  /* Quiz form */
+  
+    .quiz-form-container {
+      width: 90%;
+      background-color: #aaa;
+      padding: 10px;
+    }
+    
+      h2 {
+        text-align: center;
+      }
+      
+      .quiz-option-container {
+        width: 90%;
+      }
+      
+      form {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        align-content: center;
+      }
+      
+      fieldset {
+        display: flex;
+        flex: 1 0 100%;
+      }
+      
 /* Footer */
 
 footer {

@@ -88,21 +88,24 @@ body {
         text-align: center;
       }
       
-      .quiz-option-container {
+      .quiz-form {
         width: 90%;
+        margin: auto;
       }
       
-      form {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: space-between;
-        align-content: center;
-      }
-      
-      fieldset {
-        display: flex;
-        flex: 1 0 100%;
-      }
+        fieldset {
+          text-align: center;
+          margin: 0px;
+          border: none;
+          padding: 0px;
+        }
+        
+        fieldset label {
+          display: inline-block;
+          width: 100%;
+          border: 1px solid red;
+          margin-bottom: 10px;
+        }
       
   /* Question feedback display */
   
@@ -160,6 +163,10 @@ footer {
       }
       
       .user-progress-element li {
+      }
+      
+      fieldset label {
+        width: 49%;
       }
       
 }

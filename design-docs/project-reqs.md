@@ -61,8 +61,9 @@ Lists and tracks the project requirements and user stories for this app.
       - [X] Current question number
       - [X] Number of correct answers
       - [X] Percentage of correct answers
-  - [ ] A `starting screen` which has:
-      - [ ] A `Start button`
+  - [X] A `starting screen` which has:
+    - [X] A welcome message and `quiz instructions`
+    - [X] A `Start button`
   - [ ] A `quiz form` which has:
     - [ ] The `question text`
     - [ ] Four `answer options`

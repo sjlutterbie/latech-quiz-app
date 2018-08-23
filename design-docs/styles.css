@@ -15,47 +15,69 @@ body {
 
 /* === SMALL SCREEN LAYOUT === */
 
-header {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: stretch;
-}
+/* Header */
 
-  .site-title {
-    order: 1;
-    background: #eee;
-    width: 100%;
-  }
-    
-    h1 {
-      text-align: center;
-      font-size: 27px;
-      margin: 0px;
-      padding: 10px;
-    }
-  
-  .user-progress-element {
-    order: 2;
-    width: 100%;
-    background: #ccc;
+  header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
   }
   
-    .user-progress-element ul {
-      list-style: none;
-      padding: 5px;
-      text-align: center;
-      margin: 0px;
+    .site-title {
+      order: 1;
+      background: #eee;
+      width: 100%;
+    }
+      
+      h1 {
+        text-align: center;
+        font-size: 27px;
+        margin: 0px;
+        padding: 10px;
+      }
+    
+    .user-progress-element {
+      order: 2;
+      width: 100%;
+      background: #ccc;
     }
     
-      .user-progress-element li {
-        display: inline-block;
-        padding: 0px 3px;
+      .user-progress-element ul {
+        list-style: none;
+        padding: 5px;
+        text-align: center;
+        margin: 0px;
       }
       
-main {
-  flex: 1 0 auto;
-}
+        .user-progress-element li {
+          display: inline-block;
+          padding: 0px 3px;
+        }
+
+/* Main content */
+
+  main {
+    display: flex;
+    flex: 1 0 auto;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+  }
+  
+  /* Starting display */
+  
+    .starting-display {
+      width: 90%;
+      max-width: 500px;
+      background-color: #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+
+
+/* Footer */
 
 footer {
   flex-shrink: 0;

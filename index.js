@@ -308,7 +308,32 @@ function renderUserProgressElement() {
     // Question Number = userProgress.questionNumber
     // Answered correctly = userProgress.correctAnswers
     // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber - 1)
-      // This adjusts for the fact that questionNumber is advanced one beyond how many questions they've answered.
+      // This adjusts 
+
+  //Calculate and format percentage correct
+      // NOTE: -1 adjusts for the fact that questionNumber is advanced
+      // one beyond how many questions they've answered.
+  
+  let percentageCorrect = ((userProgressGlobal.correctAnswers
+                            / userProgressGlobal.questionNumber - 1)
+                           * 100)
+                           .toFixed(1);
+                           
+  // Format percentageCorrect string, setting it to "" if no questions answered.
+  let percentageCorrectString = "";
+  
+  if(percentageCorrect) {
+    percentageCorrectString = `(${percentageCorrect})%`; 
+  }
+
+  let userProgressElementInnerHTML = `
+    <ul>
+      <li>Question #${userProgressGlobal.questionNumber}</li>
+      <li>Correct: ${userProgressGlobal.correctAnswers} ${percentageCorrectString}</li>
+    </ul>  
+  `;
+
+  $('.user-progress-element').html(userProgressElementInnerHTML);
 
   if(TESTING) {
     console.log(`"renderUserProgressElement" was called.`);

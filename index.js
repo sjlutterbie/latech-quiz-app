@@ -71,7 +71,7 @@ function renderQuizForm(prevCorrectAnswer) {
   //This function renders the quizForm within the quizDisplay
   
   // When quizForm is called to appear:
-  let quizOptions = selectQuizOptions();
+  let quizOptions = selectQuizOptions(quizDataGlobal.length);
     
   // Select the correctAnswer
   let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
@@ -96,16 +96,30 @@ function renderQuizForm(prevCorrectAnswer) {
   }
 }
 
-  function selectQuizOptions() {
+  function selectQuizOptions(max) {
     // TODO: This function will select 4 IDs from quizDataGlobal, representing
     // the four companies to be used
     
+    // Generates an array of four random numbers, without repeating, in a given range.
+    let array = [];
+    
+    while (array.length < 4) {
+      let rand = Math.floor(Math.random() * max);
+      
+      // If the rand isn't in the array, add it.
+      if (!array.includes(rand)){
+        array.push(rand);
+      }
+      
+    }
     
     
-    return [0,1,2,3]; // TESTING VALUE
+    return array; // TESTING VALUE
     
     if(TESTING) {
-      console.log(`"selectQuizOptions" was called.`);
+      console.log(`"selectQuizOptions" was called.
+        array: ${array}
+      `);
     }
   }
   

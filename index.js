@@ -315,28 +315,33 @@ function renderUserProgressElement() {
       // one beyond how many questions they've answered.
   
   let percentageCorrect = ((userProgressGlobal.correctAnswers
-                            / userProgressGlobal.questionNumber - 1)
+                            / (userProgressGlobal.questionNumber - 1))
                            * 100)
                            .toFixed(1);
                            
   // Format percentageCorrect string, setting it to "" if no questions answered.
   let percentageCorrectString = "";
   
-  if(percentageCorrect) {
+  if(!isNaN(percentageCorrect)) {
     percentageCorrectString = `(${percentageCorrect})%`; 
   }
 
   let userProgressElementInnerHTML = `
     <ul>
       <li>Question #${userProgressGlobal.questionNumber}</li>
-      <li>Correct: ${userProgressGlobal.correctAnswers} ${percentageCorrectString}</li>
+      <li>Correct: ${userProgressGlobal.correctAnswers} 
+        / ${userProgressGlobal.questionNumber - 1} ${percentageCorrectString}</li>
     </ul>  
   `;
 
   $('.user-progress-element').html(userProgressElementInnerHTML);
 
   if(TESTING) {
-    console.log(`"renderUserProgressElement" was called.`);
+    console.log(`"renderUserProgressElement" was called.
+      percentageCorrect: ${Boolean(percentageCorrect)}
+      ... as a string: ${percentageCorrectString}
+    `);
+    
   }
   
 }
@@ -346,6 +351,11 @@ function renderUserProgressElement() {
 //FINAL RESULTS DISPLAY
 
 function renderFinalResultsDisplay() {
+  
+  // Hide the userProgress Element
+  
+  $('.user-progress-element').html("");
+  
   
   // Calculate & format percentage correct
   

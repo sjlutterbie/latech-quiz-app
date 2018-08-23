@@ -1,48 +1,166 @@
 'use strict';
 
-// DOCUMENT LOAD (handleQUizApp function)
-  // When the user loads the document, the "startingDisplay" should appear
+//STARTING DISPLAY
 
-//STARTING DISPLAY (startingDisplay)
-  // When "startQuizButton" is pressed:
-    // 1. The "userProgress" state is loaded as a global const (object), with the following structure:
-      /*
-        const userProgress = {
-          questionNumber: 0,
-          correctAnswers: 0
-        }
-      */
-    // 2. The "quizData" is loaded as a global constant, with the following structure:
-      /*
-        quizData = [
-          {
-            companyName: {String},
-            companyWebsite: {String},
-            companyDescription: {String},
-            companyQuestion: {String},
-            companyLogo: {String}
-          },
-          {...}
-        ]
-      */
-    // 3. Set a variable prevCorrectAnswer to undefined, which gets passed to quizForm
-      // This will be used to prevent repeating the same question in a row
-    // 4. startingDisplay should disappear
-    // 5. "quizForm" should appear
+function handleStartingDisplay() {
+  
+  $('.js-start-quiz-button').on('click', function(event){
+    
+    //Initialize previous correct answer tracking, to avoid repeat questions
+    let prevCorrectAnswer;
 
-//QUIZ FORM (quizForm)
-  // When quizForm is called to appear:
-    // 1. It gets prevCorrectAnswer from the function that called it
-    // 2. A "quizItem" should be created:
-      // 1. Four quizData.company objects should be selected by ID: quizOptions = [id1,id2,id3,id4]
-      // 2. One element of quizOptions should be selected as the "correctAnswer"
-          // If correctAnswer equals prevCorrectAnswer, go back and select another correctAnswer
-    // 3. The "quizForm" is rendered, using the following data:
-        // quizQuestion = quizData[correctAnswer].question
-        // quizRadioSelects[1-4] = quizData[quizOptions...]
-          // The value for each radio is set to the respective quizOption ID
-    // 4. userProgress.questionNumber should increase by 1.
-    // 5. The "userProgressElement" should be rendered.
+    // Display a quiz question
+    renderQuizDisplay(prevCorrectAnswer);
+
+    // Event handling testing
+    if(TESTING){
+      console.log(`The "Start quiz button" was clicked!
+        prevCorrectAnswer: ${prevCorrectAnswer}`);
+    }
+
+  });
+
+  //handleStartingDisplay testing
+  if(TESTING) {
+    console.log(`"handleStartingDisplay" was called.`);
+  }
+}
+
+
+//===========================================================================//
+
+//QUIZ DISPLAY (quizDisplay, quizForm)
+
+function renderQuizDisplay(prevCorrectAnswer) {
+  // Advances the quiz game, renders a new quiz question.
+  
+  //Update userProgress.questionNumber to reflect the new question
+    userProgressGlobal.questionNumber += 1;
+    
+  //Render the "userProgressElement" should be rendered.
+    renderUserProgressElement();
+  
+  // Render the quizDisplay
+  let quizDisplayInnerHTML = `
+    <div class="quiz-form-container">
+      <form class="quiz-form" required>
+      </form>
+    </div>
+  `;
+  
+  $('main').html(quizDisplayInnerHTML);
+  
+  // Render the quizForm
+  renderQuizForm(prevCorrectAnswer);
+  
+  if(TESTING) {
+    console.log(`"renderQuizDisplay" was called.
+      userProgressGlobal.questionNumber: ${userProgressGlobal.questionNumber}
+    `);
+  }
+  
+}
+
+function renderQuizForm(prevCorrectAnswer) {
+  //Renders the quizForm within the quizDisplay
+  
+  // Select quizOptions to include in this question
+  let quizOptions = selectQuizOptions(quizDataGlobal.length);
+    
+  // Select the correctAnswer
+  let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
+  
+  // Create the quizForm innterContent
+  let quizFormInnerHTML = `
+    <h2>${quizDataGlobal[correctAnswer].companyQuestion}</h2>
+    <fieldset></fieldset>
+    <input type="submit" class="quiz-submit-button"></input>
+    `;
+  
+  $('.quiz-form').html(quizFormInnerHTML);
+  
+  //Generate quizOptions, which render within the quizForm
+    quizOptions.forEach(index => renderQuizOption(index));
+    
+  if(TESTING) {
+    console.log(`"renderQuizForm" was called.
+      - prevCorrectAnswer: ${prevCorrectAnswer}
+      - quizOptions: ${quizOptions}
+      - correctAnswer: ${correctAnswer}
+      - Correct Company: ${quizDataGlobal[correctAnswer].companyName}
+    `);
+  }
+}
+
+function selectQuizOptions(max) {
+  // Generates an array of 4 random numbers, without repeating, in a given range.
+  
+  let array = [];
+  
+  while (array.length < 4) {
+    let rand = Math.floor(Math.random() * max);
+    
+    // If the rand isn't in the array, add it.
+    if (!array.includes(rand)){
+      array.push(rand);
+    }
+    
+  }
+  
+  return array;
+  
+  if(TESTING) {
+    console.log(`"selectQuizOptions" was called.
+      array: ${array}
+    `);
+  }
+}
+  
+function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
+  // TODO: This function selects a correct answer that doesn't match the previous
+  // correct answer.
+  
+  let randAnswer = prevCorrectAnswer;
+  
+  // If the new answer is the same as the previous answer...
+  while (randAnswer === prevCorrectAnswer) {
+    // ... generate a new correct answer
+    randAnswer = quizOptions[Math.floor(Math.random() * 4)];
+    
+  }
+  
+  return randAnswer; 
+  
+  if(TESTING) {
+    console.log(`"selectCorrectAnswer" was called.
+      Previous Answer: ${prevCorrectAnswer}
+      Possible Answers: ${quizOptions}
+      New Answer: ${randAnswer}
+    `);
+  }
+}
+  
+function renderQuizOption(index) {
+  // This function renders the label->input HTML code for a single quizOption
+
+    let quizOptionInnerHTML = `
+      <label class="quiz-option" for="${index}">
+        <input type="radio" name="answer" id="${index}" value="${index}">
+          ${quizDataGlobal[index].companyName}
+        </input>
+      </label>
+    `
+    
+    $('fieldset').append(quizOptionInnerHTML);
+  
+  if(TESTING) {
+    console.log(`"renderQuizOption" was called.
+    - index: ${index}`);
+  }  
+  
+}
+
+//===========================================================================//
 
 // QUIZ FORM SUBMISSION
   // When a quizForm is submitted:
@@ -64,11 +182,21 @@
     // If the user presses the "endQuiz" buttong: Call the "finalResultsDisplay" to appear
     
 //USER PROGRESS ELEMENT (userProgressElement)
+function renderUserProgressElement() {
   // When the userProgressElement is rendered:
     // Question Number = userProgress.questionNumber
     // Answered correctly = userProgress.correctAnswers
     // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber - 1)
       // This adjusts for the fact that questionNumber is advanced one beyond how many questions they've answered.
+
+  if(TESTING) {
+    console.log(`"renderUserProgressElement" was called.`);
+  }
+  
+}
+
+
+
     
 //FINAL RESULTS DISPLAY (finalResultsDisplay)
   // When the finalResultsDisplay is called to appear:
@@ -79,3 +207,20 @@
       // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber)
     // If the user presses the "startNewQuiz" button:
       // Call the handleQuizApp function, which re-initializes the system
+
+// DOCUMENT LOAD (handleQUizApp function)
+  // When the user loads the document, the "startingDisplay" appears automatically.
+
+function handleQuizApp() {
+  // Subsidiary handler functions get called here
+  
+  handleStartingDisplay();
+  
+  if(TESTING) {
+    console.log(`"handleQuizApp" was called`);
+  }
+  
+}
+
+//jQuery launch code...  
+$(handleQuizApp);

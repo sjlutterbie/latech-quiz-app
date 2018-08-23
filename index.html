@@ -34,18 +34,18 @@
     <main role="main">
       
       <!-- ===STARTING DISPLAY=== -->
-<!--
+
     <div class="starting-display">
         <p>Welcome message</p>
         <p>Quiz instructions</p>
-        <button role="button" class="start-button">Start quiz</button>
+        <button role="button" class="start-quiz-button js-start-quiz-button">Start quiz</button>
     </div>
--->      
-      <!-- ===QUIZ FORM=== -->
 
+      <!-- ===QUIZ FORM=== -->
+<!--
       <div class="quiz-form-container">
-        <h2>Quiz question</h2>
         <form class="quiz-form" required>
+          <h2>Quiz question</h2>
           <fieldset>
             <label class="quiz-option">
               <input type="radio" name="answer" value="id1">
@@ -68,10 +68,10 @@
               </input>
             </label>
           </fieldset>
-          <input type="submit" class="submitButton"></input>
+          <input type="submit" class="quiz-submit-button"></input>
         </form>
       </div>
-
+-->
       
       <!-- ===QUESTION FEEDBACK DISPLAY=== -->
 <!--
@@ -101,10 +101,11 @@
            GitHub profile. -->
     </footer>
   
-  <!-- Load jQuery and quiz app scripts -->
+  <!-- Load jQuery, globalVars, and quiz app scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"
             integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
             crossorigin="anonymous"></script>
+    <script type="text/javascript" src="globalVars.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </body>
 </html>

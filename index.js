@@ -36,7 +36,15 @@ function renderQuizDisplay(prevCorrectAnswer) {
   // This renders the .quiz-form.container display. The HTML is generated
   // as a template string, within which the renderQuizForm function is called.
   
-  renderQuizForm();
+  let quizDisplayInnerHTML = `
+    <div class="quiz-form-container">
+      <form class="quiz-form" required>
+        <p>The quizForm will go here!</p>
+      </form>
+    </div>
+  `;
+  
+  $('main').html(quizDisplayInnerHTML);
   
   if(TESTING) {
     console.log(`"renderQuizDisplay" was called.`);

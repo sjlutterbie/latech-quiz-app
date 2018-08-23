@@ -78,10 +78,12 @@ Lists and tracks the project requirements and user stories for this app.
     - [X] Number of correct answers
     - [X] Percentage of correct answers
     - [X] A `Start new quiz` button
-- [ ] A `site footer` that displays:
+- [X] A `site footer` that displays:
   - [X] My name and copyright information
-  - [ ] *NiceToHave:* An `Email me icon` that links to my email address.
-  - [ ] *NiceToHave:* A `Github icon` that links to my GitHub profile.
+- *Nice To Haves:*
+  - Footer:
+    - [ ] An `Email me icon` that links to my email address.
+    - [ ] A `Github icon` that links to my GitHub profile.
 
 ## Process requirements
 

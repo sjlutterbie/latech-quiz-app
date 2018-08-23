@@ -1,10 +1,20 @@
 'use strict';
 
-// DOCUMENT LOAD (handleQUizApp function)
-  // When the user loads the document, the "startingDisplay" should appear
+// Do you want testing & debugging feedback?
+  const TESTING = true;
 
-//STARTING DISPLAY (startingDisplay)
-  // When "startQuizButton" is pressed:
+//STARTING DISPLAY
+
+function handleStartingDisplay() {
+  
+  $('.start-quiz-button').on('click', function(event){
+    
+    if(TESTING){
+      console.log('The `Start quiz button` was clicked!');
+    }
+    
+
+        // When "startQuizButton" is pressed:
     // 1. The "userProgress" state is loaded as a global const (object), with the following structure:
       /*
         const userProgress = {
@@ -28,7 +38,15 @@
     // 3. Set a variable prevCorrectAnswer to undefined, which gets passed to quizForm
       // This will be used to prevent repeating the same question in a row
     // 4. startingDisplay should disappear
-    // 5. "quizForm" should appear
+    // 5. "quizForm" should appear    
+  });
+
+
+  if(TESTING) {
+    console.log('`handleStartingDisplay` was called');
+  }
+}
+
 
 //QUIZ FORM (quizForm)
   // When quizForm is called to appear:
@@ -79,3 +97,20 @@
       // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber)
     // If the user presses the "startNewQuiz" button:
       // Call the handleQuizApp function, which re-initializes the system
+
+// DOCUMENT LOAD (handleQUizApp function)
+  // When the user loads the document, the "startingDisplay" appears automatically.
+
+function handleQuizApp() {
+  // Subsidiary handler functions get called here
+  
+  handleStartingDisplay();
+  
+  if(TESTING) {
+    console.log('`handleQUizApp` was called');
+  }
+  
+}
+
+//jQuery launch code...  
+$(handleQuizApp);

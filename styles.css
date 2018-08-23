@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-flow: column nowrap;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* === SMALL SCREEN LAYOUT === */
+
+/* Header */
+
+  header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: stretch;
+  }
+  
+    .site-title {
+      order: 1;
+      background: #eee;
+      width: 100%;
+    }
+      
+      h1 {
+        text-align: center;
+        font-size: 27px;
+        margin: 0px;
+        padding: 10px;
+      }
+    
+    .user-progress-element {
+      order: 2;
+      width: 100%;
+      background: #ccc;
+    }
+    
+      .user-progress-element ul {
+        list-style: none;
+        padding: 5px;
+        text-align: center;
+        margin: 0px;
+      }
+      
+        .user-progress-element li {
+          display: inline-block;
+          padding: 0px 3px;
+        }
+
+/* Main content */
+
+  main {
+    display: flex;
+    flex: 1 0 auto;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+  }
+  
+  /* Starting display */
+  
+    .starting-display {
+      width: 90%;
+      max-width: 500px;
+      background-color: #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+    
+  /* Quiz form */
+  
+    .quiz-form-container {
+      width: 90%;
+      background-color: #aaa;
+      padding: 10px;
+    }
+    
+      h2 {
+        text-align: center;
+      }
+      
+      .quiz-form {
+        width: 90%;
+        margin: auto;
+      }
+      
+        fieldset {
+          text-align: center;
+          margin: 0px;
+          border: none;
+          padding: 0px;
+        }
+        
+        fieldset label {
+          display: inline-block;
+          width: 100%;
+          border: 1px solid red;
+          margin-bottom: 10px;
+        }
+      
+  /* Question feedback display */
+  
+    .question-feedback-display {
+      width: 90%;
+      max-width: 500px;
+      background-color: #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+    
+  /* Final results disply */
+  
+    .final-results-display {
+      width: 90%;
+      max-width: 500px;
+      background-color: #aaa;
+      padding: 10px;
+      text-align: center;
+    }
+
+      
+/* Footer */
+
+footer {
+  flex-shrink: 0;
+  padding: 5px;
+  text-align: center;
+  background: #ccc;
+}
+
+/* ===LARGE SCREEN ADJUSTMENTS=== */
+
+@media only screen and (min-width: 600px) {
+  
+  header {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+    h1 {
+      text-align: left;
+    }
+    
+    .user-progress-element {
+      background: #eee; /* Match .site-title for material design continuity */
+    }
+    
+      .user-progress-element ul {
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 100%;
+      }
+      
+      .user-progress-element li {
+      }
+      
+      fieldset label {
+        width: 49%;
+      }
+      
+}

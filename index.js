@@ -30,18 +30,32 @@ function handleStartingDisplay() {
 }
 
 
-//QUIZ FORM (quizForm)
+//QUIZ DISPLAY (quizDisplay, quizForm)
 
 function renderQuizDisplay(prevCorrectAnswer) {
+  // This renders the .quiz-form.container display. The HTML is generated
+  // as a template string, within which the renderQuizForm function is called.
+  
+  renderQuizForm();
+  
+  if(TESTING) {
+    console.log(`"renderQuizDisplay" was called.`);
+  }
+  
+}
+
+function renderQuizForm(prevCorrectAnswer) {
+  
+  //This function renders the quizForm within the quizDisplay
   
   // When quizForm is called to appear:
-    let quizOptions = selectQuizOptions();
+  let quizOptions = selectQuizOptions();
     
   // Select the correctAnswer
-    let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
+  let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
   
-      // 2. One element of quizOptions should be selected as the "correctAnswer"
-          // If correctAnswer equals prevCorrectAnswer, go back and select another correctAnswer
+  // Create the quizForm innterContent
+  
     // 3. The "quizForm" is rendered, using the following data:
         // quizQuestion = quizData[correctAnswer].question
         // quizRadioSelects[1-4] = quizData[quizOptions...]
@@ -51,14 +65,18 @@ function renderQuizDisplay(prevCorrectAnswer) {
 
   
   if(TESTING) {
-    console.log(`"renderQuizDisplay" was called.
-      - prevCorrectAnswer: ${prevCorrectAnswer}`);
+    console.log(`"renderQuizForm" was called.
+      - prevCorrectAnswer: ${prevCorrectAnswer}
+      - quizOptions: ${quizOptions}
+      - correctAnswer: ${correctAnswer}`);
   }
 }
 
   function selectQuizOptions() {
     // This function will select 4 IDs from quizDataGlobal, representing
     // the four companies to be used
+    
+    return ["placeHolder 1","placeHolder 2","placeHolder 3","placeHolder 4"];
     
     if(TESTING) {
       console.log(`"selectQuizOptions" was called.`);
@@ -69,10 +87,16 @@ function renderQuizDisplay(prevCorrectAnswer) {
     // This function selects a correct answer that doesn't match the previous
     // correct answer.
     
+    return "placeHolder: correctAnswer";
+    
     if(TESTING) {
       console.log(`"selectCorrectAnswer" was called.`);
     }
   }
+
+
+
+
 
 // QUIZ FORM SUBMISSION
   // When a quizForm is submitted:
@@ -119,7 +143,7 @@ function handleQuizApp() {
   handleStartingDisplay();
   
   if(TESTING) {
-    console.log(`"handleQUizApp" was called`);
+    console.log(`"handleQuizApp" was called`);
   }
   
 }

@@ -188,11 +188,12 @@ function handleQuizAnswer() {
       alert('Please select an answer.');
       return;
     }
-    
-    console.log("Evaluating answer...");
-    
-      //Check Answer
-      let boolCorrect = processQuizAnswer(answerVal, correctAnswer);
+
+    //Check Answer
+    let boolCorrect = processQuizAnswer(answerVal, correctAnswer);
+      
+    // render Feedback display
+    renderFeedbackDisplay(boolCorrect, correctAnswer);
     
     //Quiz answer submission testing
     if(TESTING) {
@@ -233,6 +234,21 @@ function processQuizAnswer(answerVal, correctAnswer) {
 }
 
 
+//===========================================================================//
+
+
+//FEEDBACK DISPLAY (feedbackDisplay)
+
+function renderFeedbackDisplay(boolCorrect, correctAnswer) {
+  // This function displays quiz item feedback.
+  
+  //TODO
+  
+  if(TESTING) {
+    console.log(`"renderFeedbackDisplay" was called.`);
+  }
+}
+
       // When a quizForm is submitted:
     // 1. Did they answer correctly? (quizForm.val() === correctAnswer?)
       // YES:
@@ -241,12 +257,7 @@ function processQuizAnswer(answerVal, correctAnswer) {
       // NO: 
         // Set the "feedbackMessage" to the "incorrectAnswerMessage"
       // 3. The feedbackDisplay should be called to appear
-    
 
-//===========================================================================//
-
-
-//FEEDBACK DISPLAY (feedbackDisplay)
   //When feedbackDisplay is called to appear, it is populated with the following:
     // feedbackMessage, as passed from the quizForm
     // answerFeedback is drawn from quizData[correctAnswer]

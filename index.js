@@ -38,7 +38,7 @@ function renderQuizDisplay(prevCorrectAnswer) {
   //Update userProgress.questionNumber to reflect the new question
     userProgressGlobal.questionNumber += 1;
     
-  //Render the "userProgressElement" should be rendered.
+  //Render the "userProgressElement"
     renderUserProgressElement();
   
   // Render the quizDisplay
@@ -304,11 +304,7 @@ function handleFeedbackDisplay() {
     
 //USER PROGRESS ELEMENT (userProgressElement)
 function renderUserProgressElement() {
-  // When the userProgressElement is rendered:
-    // Question Number = userProgress.questionNumber
-    // Answered correctly = userProgress.correctAnswers
-    // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber - 1)
-      // This adjusts 
+  // Displays the user's progress and performance throughout the quiz
 
   //Calculate and format percentage correct
       // NOTE: -1 adjusts for the fact that questionNumber is advanced

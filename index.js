@@ -38,8 +38,8 @@ function renderQuizDisplay(prevCorrectAnswer) {
   //Update userProgress.questionNumber to reflect the new question
     userProgressGlobal.questionNumber += 1;
     
-  //Render the "userProgressElement"
-    renderUserProgressElement();
+  //Render the question number
+    renderHeaderQuestionNumber();
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
@@ -239,6 +239,9 @@ function processQuizAnswer(answerVal, correctAnswer) {
 function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   // This function displays quiz item feedback.
   
+  // Update header user score
+  renderHeaderUserScore();
+  
   // Generate response text
   let feedbackText = boolCorrect ?
     `Yes, ${quizDataGlobal[correctAnswer].companyName} is correct!` :
@@ -302,54 +305,43 @@ function handleFeedbackDisplay() {
   
 }
     
-//USER PROGRESS ELEMENT (userProgressElement)
-function renderUserProgressElement() {
-  // Displays the user's progress and performance throughout the quiz
+//HEADER QUESTION NUMBER AND USER SCORE (userProgressElement)
 
-  //Calculate and format percentage correct
-      // NOTE: -1 adjusts for the fact that questionNumber is advanced
-      // one beyond how many questions they've answered.
+function renderHeaderQuestionNumber() {
   
-  let percentageCorrect = ((userProgressGlobal.correctAnswers
-                            / (userProgressGlobal.questionNumber - 1))
-                           * 100)
-                           .toFixed(1);
-                           
-  // Format percentageCorrect string, setting it to "" if no questions answered.
-  let percentageCorrectString = "";
+  $('.js-header-question-number').html(`
+  Question #${userProgressGlobal.questionNumber}`);
   
-  if(!isNaN(percentageCorrect)) {
-    percentageCorrectString = `(${percentageCorrect})%`; 
-  }
-  
-  // Create userProgressString
-  let userProgressString = "";
-  
-  // Don't display "Correct:..." for the first question
-  if (userProgressGlobal.questionNumber > 1) {
-    userProgressString = `Correct: ${userProgressGlobal.correctAnswers}/`
-                          + `${userProgressGlobal.questionNumber - 1} `
-                          + `${percentageCorrectString}`;
-  }
-
-  let userProgressElementInnerHTML = `
-    <ul>
-      <li>Question #${userProgressGlobal.questionNumber}</li>
-      <li>${userProgressString}</li>
-    </ul>  
-  `;
-
-  $('.user-progress-element').html(userProgressElementInnerHTML);
-
-  if(TESTING) {
-    console.log(`"renderUserProgressElement" was called.
-      percentageCorrect: ${Boolean(percentageCorrect)}
-      ... as a string: ${percentageCorrectString}
+  if(TESTING){
+    console.log(`"renderHeaderQuestionNumber" was called.
+      Question #: ${userProgressGlobal.questionNumber}
     `);
-    
   }
   
 }
+
+function renderHeaderUserScore () {
+  
+  let correctPercentage = ((userProgressGlobal.correctAnswers
+                           /userProgressGlobal.questionNumber)
+                           * 100).toFixed(1);
+
+  
+  let userScoreString = `Correct: ${userProgressGlobal.correctAnswers}`
+                        + `/${userProgressGlobal.questionNumber}`
+                        + ` (${correctPercentage}%)`;
+  
+  $('.js-header-user-score').html(userScoreString);
+  
+  
+  if(TESTING){
+    console.log(`"renderHeaderUserScore" was called.
+      User Score: ${userProgressGlobal.correctAnswers}
+    `);
+  }
+}
+
+
 
 //===========================================================================//
 
@@ -357,10 +349,9 @@ function renderUserProgressElement() {
 
 function renderFinalResultsDisplay() {
   
-  // Hide the userProgress Element
+  // Hide the question number and user score from the top Nav
   
-  $('.user-progress-element').html("");
-  
+  $('.js-user-progress-element').html("");
   
   // Calculate & format percentage correct
   

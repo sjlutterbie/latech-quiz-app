@@ -64,10 +64,10 @@ Lists and tracks the project requirements and user stories for this app.
   - [X] A `starting screen` which has:
     - [X] A welcome message and `quiz instructions`
     - [X] A `Start button`
-  - [ ] A `quiz form` which has:
-    - [ ] The `question text`
-    - [ ] Four `answer options`
-    - [ ] A `Submit answer` button
+  - [X] A `quiz form` which has:
+    - [X] The `question text`
+    - [X] Four `answer options`
+    - [X] A `Submit answer` button
   - [ ] A `question feedback display` which has:
     - [ ] A `correct/incorrect display`
     - [ ] The `correct answer text`

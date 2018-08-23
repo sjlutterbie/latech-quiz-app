@@ -335,23 +335,16 @@ function renderFinalResultsDisplay() {
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>
       <p>Performance: ${percentageCorrect}%</p>
-      <button role="button" class="start-button">Start new quiz</button>
+      <button role="button" class="start-new-quiz-button js-start-quiz-button">Start new quiz</button>
     </div>
   `;
   
   $('main').html(finalResultsDisplayInnerHTML);
   
   
-  // When the finalResultsDisplay is called to appear:
-    // 1. The userProgressElement content should be cleared (to avoid duplicate content)
-    // 2. The finalResultsDisplay is rendered:
-      // Total questions = userProgress.questionNumber
-      // Answered correctly = userProgress.correctAnswers
-      // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber)
-    // If the user presses the "startNewQuiz" button:
-      // Call the handleQuizApp function, which re-initializes the system
-  
-  
+  //NOTE: The "Start new quiz" button listener is the same action as the initial
+  // "Start quiz" button, and thus is handled by handleStartingDisplay.
+
   if(TESTING) {
     console.log(`"renderFinalResultsDisplay" was called.
       Total Questions: ${userProgressGlobal.questionNumber}
@@ -360,9 +353,6 @@ function renderFinalResultsDisplay() {
     `);
   }
 }
-
-
-
 
 // DOCUMENT LOAD (handleQUizApp function)
   // When the user loads the document, the "startingDisplay" appears automatically.
@@ -373,7 +363,7 @@ function handleQuizApp() {
   handleStartingDisplay();
   handleQuizAnswer();
   handleFeedbackDisplay();
-  
+
   if(TESTING) {
     console.log(`"handleQuizApp" was called`);
   }

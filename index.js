@@ -36,6 +36,15 @@ function renderQuizDisplay(prevCorrectAnswer) {
   // This renders the .quiz-form.container display. The HTML is generated
   // as a template string, within which the renderQuizForm function is called.
   
+  //Update userProgress.questionNumber to reflect the new question
+  
+    userProgressGlobal.questionNumber += 1;
+    
+
+    
+    // 4. userProgress.questionNumber should increase by 1.
+    // 5. The "userProgressElement" should be rendered.
+
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
@@ -51,7 +60,9 @@ function renderQuizDisplay(prevCorrectAnswer) {
   renderQuizForm(prevCorrectAnswer);
   
   if(TESTING) {
-    console.log(`"renderQuizDisplay" was called.`);
+    console.log(`"renderQuizDisplay" was called.
+      userProgressGlobal.questionNumber: ${userProgressGlobal.questionNumber}
+    `);
   }
   
 }
@@ -68,18 +79,16 @@ function renderQuizForm(prevCorrectAnswer) {
   
   // Create the quizForm innterContent
   let quizFormInnerHTML = `
-    <p>renderQuizForm is working correctly!</p>
+    <h2>TODO: Integrate dynamically generated quizQuestion</h2>
+    <fieldset>
+      <p>TODO: Integrate dynamically generated quizOptions</p>
+    </fieldset>
   `;
   
   $('.quiz-form').html(quizFormInnerHTML);
   
-    // 3. The "quizForm" is rendered, using the following data:
-        // quizQuestion = quizData[correctAnswer].question
-        // quizRadioSelects[1-4] = quizData[quizOptions...]
-          // The value for each radio is set to the respective quizOption ID
-    // 4. userProgress.questionNumber should increase by 1.
-    // 5. The "userProgressElement" should be rendered.
-
+  //Generate quizOptions
+    quizOptions.forEach(index => renderQuizOption(index));
   
   if(TESTING) {
     console.log(`"renderQuizForm" was called.
@@ -109,6 +118,26 @@ function renderQuizForm(prevCorrectAnswer) {
     if(TESTING) {
       console.log(`"selectCorrectAnswer" was called.`);
     }
+  }
+  
+  function renderQuizOption(index) {
+    // This function renders the label->input HTML code for a single quizOption
+      // TODO: Use index argument to draw content from quizDataGlobal
+      
+      let quizOptionInnerHTML = `
+        <label class="quiz-option">
+          <input type="radio" name="answer" value="${index}">
+            ${index}
+          </input>
+        </label>
+      `
+      $('fieldset').append(quizOptionInnerHTML);
+    
+    if(TESTING) {
+      console.log(`"renderQuizOption" was called.
+      - index: ${index}`);
+    }  
+    
   }
 
 

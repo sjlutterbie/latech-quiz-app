@@ -198,10 +198,9 @@ function handleQuizAnswer() {
     //Quiz answer submission testing
     if(TESTING) {
       console.log(`Quiz answer submitted!
-        answerVal: ${answerVal}
-        correctAnswer: ${correctAnswer}
+        answerVal: ${answerVal} - ${quizDataGlobal[answerVal].companyName}
+        correctAnswer: ${correctAnswer} - ${quizDataGlobal[correctAnswer].companyName}
         boolCorrect: ${boolCorrect}
-        Company: ${quizDataGlobal[answerVal].companyName}
       `);
     }
     
@@ -233,34 +232,49 @@ function processQuizAnswer(answerVal, correctAnswer) {
   
 }
 
-
 //===========================================================================//
-
 
 //FEEDBACK DISPLAY (feedbackDisplay)
 
 function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   // This function displays quiz item feedback.
   
-  //TODO
+  // Generate response text
+  let feedbackText = boolCorrect ?
+    `Yes, ${quizDataGlobal[correctAnswer].companyName} is correct!` :
+    `I'm sorry, ${quizDataGlobal[correctAnswer].companyName} is incorrect.`;
   
+  //Render Feedback Display
+  
+  let feedbackDisplayInnerHTML = `
+    <div class="question-feedback-display">
+      <h2>${feedbackText}</h2>
+      <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
+      <button role="button" class="next-question-button">Next question</button>
+      <button role="button" class="finish-button">Finish quiz</button>
+    </div>
+  `;
+  
+  $('main').html(feedbackDisplayInnerHTML);
+  
+
   if(TESTING) {
     console.log(`"renderFeedbackDisplay" was called.`);
+    $('.question-feedback-display').append(
+      `<button role="button" class="js-start-quiz-button">TESTING:<br/>Generate new question</button>`
+      );
   }
 }
 
-      // When a quizForm is submitted:
-    // 1. Did they answer correctly? (quizForm.val() === correctAnswer?)
-      // YES:
-        // Set the "feedbackMessage" to the "correctAnswerMessage"
-        // Increase userProgress.correctAnswers by 1
-      // NO: 
-        // Set the "feedbackMessage" to the "incorrectAnswerMessage"
-      // 3. The feedbackDisplay should be called to appear
+function handleFeedbackDisplay() {
+  
+  
+  if (TESTING) {
+    console.log(`"handleFeedbackDisplay" was called.`);
+  }
+  
+}
 
-  //When feedbackDisplay is called to appear, it is populated with the following:
-    // feedbackMessage, as passed from the quizForm
-    // answerFeedback is drawn from quizData[correctAnswer]
   // The user has two options from the feedbackDisplay:
     // If the user presses the "nextQuestion" button: call quizForm to appear
     // If the user presses the "endQuiz" buttong: Call the "finalResultsDisplay" to appear
@@ -300,6 +314,7 @@ function handleQuizApp() {
   
   handleStartingDisplay();
   handleQuizAnswer();
+  handleFeedbackDisplay();
   
   if(TESTING) {
     console.log(`"handleQuizApp" was called`);

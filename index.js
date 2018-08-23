@@ -7,52 +7,39 @@ function handleStartingDisplay() {
   
   $('.start-quiz-button').on('click', function(event){
     
+    //Initialize previous correct answer tracking, to avoid repeat questions
+    let prevCorrectAnswer;
     
+    //Clear the display
+      // I don't think I need to do this, but I'm leaving it here just in case.
+    
+    // Display a quiz question
+    renderQuizDisplay(prevCorrectAnswer);
 
-        // When "startQuizButton" is pressed:
-    // 1. The "userProgress" state is loaded as a global const (object), with the following structure:
-      /*
-        const userProgress = {
-          questionNumber: 0,
-          correctAnswers: 0
-        }
-      */
-    // 2. The "quizData" is loaded as a global constant, with the following structure:
-      /*
-        quizData = [
-          {
-            companyName: {String},
-            companyWebsite: {String},
-            companyDescription: {String},
-            companyQuestion: {String},
-            companyLogo: {String}
-          },
-          {...}
-        ]
-      */
-    // 3. Set a variable prevCorrectAnswer to undefined, which gets passed to quizForm
-      // This will be used to prevent repeating the same question in a row
-    // 4. startingDisplay should disappear
-    // 5. "quizForm" should appear    
-    
     if(TESTING){
-      console.log('The `Start quiz button` was clicked!');
+      console.log(`The "Start quiz button" was clicked!
+        prevCorrectAnswer: ${prevCorrectAnswer}`);
     }
 
   });
 
 
   if(TESTING) {
-    console.log('`handleStartingDisplay` was called');
+    console.log(`"handleStartingDisplay" was called.`);
   }
 }
 
 
 //QUIZ FORM (quizForm)
+
+function renderQuizDisplay(prevCorrectAnswer) {
+  
   // When quizForm is called to appear:
-    // 1. It gets prevCorrectAnswer from the function that called it
-    // 2. A "quizItem" should be created:
-      // 1. Four quizData.company objects should be selected by ID: quizOptions = [id1,id2,id3,id4]
+    let quizOptions = selectQuizOptions();
+    
+  // Select the correctAnswer
+    let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
+  
       // 2. One element of quizOptions should be selected as the "correctAnswer"
           // If correctAnswer equals prevCorrectAnswer, go back and select another correctAnswer
     // 3. The "quizForm" is rendered, using the following data:
@@ -61,6 +48,31 @@ function handleStartingDisplay() {
           // The value for each radio is set to the respective quizOption ID
     // 4. userProgress.questionNumber should increase by 1.
     // 5. The "userProgressElement" should be rendered.
+
+  
+  if(TESTING) {
+    console.log(`"renderQuizDisplay" was called.
+      - prevCorrectAnswer: ${prevCorrectAnswer}`);
+  }
+}
+
+  function selectQuizOptions() {
+    // This function will select 4 IDs from quizDataGlobal, representing
+    // the four companies to be used
+    
+    if(TESTING) {
+      console.log(`"selectQuizOptions" was called.`);
+    }
+  }
+  
+  function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
+    // This function selects a correct answer that doesn't match the previous
+    // correct answer.
+    
+    if(TESTING) {
+      console.log(`"selectCorrectAnswer" was called.`);
+    }
+  }
 
 // QUIZ FORM SUBMISSION
   // When a quizForm is submitted:
@@ -107,7 +119,7 @@ function handleQuizApp() {
   handleStartingDisplay();
   
   if(TESTING) {
-    console.log('`handleQUizApp` was called');
+    console.log(`"handleQUizApp" was called`);
   }
   
 }

@@ -44,9 +44,6 @@ const quizDataGlobal = [
   },
 ];
 
-if(TESTING){
-  console.log(quizDataGlobal);
-}
 
 
 // USER PROGRESS DATA
@@ -57,5 +54,9 @@ const userProgressGlobal = {
 };
 
 if(TESTING){
+  console.log(`Global data loaded:
+    quizDataGlobal:`);
+  console.log(quizDataGlobal);
+  console.log(`   userProgressGlobal:`);
   console.log(userProgressGlobal);
 }

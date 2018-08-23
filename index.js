@@ -25,20 +25,24 @@
           {...}
         ]
       */
-    // 3. startingDisplay should disappear
-    // 4. "quizForm" should appear
+    // 3. Set a variable prevCorrectAnswer to undefined, which gets passed to quizForm
+      // This will be used to prevent repeating the same question in a row
+    // 4. startingDisplay should disappear
+    // 5. "quizForm" should appear
 
 //QUIZ FORM (quizForm)
   // When quizForm is called to appear:
-    // 1. A "quizItem" should be created:
+    // 1. It gets prevCorrectAnswer from the function that called it
+    // 2. A "quizItem" should be created:
       // 1. Four quizData.company objects should be selected by ID: quizOptions = [id1,id2,id3,id4]
       // 2. One element of quizOptions should be selected as the "correctAnswer"
-    // 2. The "quizForm" is rendered, using the following data:
+          // If correctAnswer equals prevCorrectAnswer, go back and select another correctAnswer
+    // 3. The "quizForm" is rendered, using the following data:
         // quizQuestion = quizData[correctAnswer].question
         // quizRadioSelects[1-4] = quizData[quizOptions...]
           // The value for each radio is set to the respective quizOption ID
-    // 3. userProgress.questionNumber should increase by 1.
-    // 4. The "userProgressElement" should be rendered.
+    // 4. userProgress.questionNumber should increase by 1.
+    // 5. The "userProgressElement" should be rendered.
 
 // QUIZ FORM SUBMISSION
   // When a quizForm is submitted:
@@ -46,7 +50,7 @@
       // YES:
         // Set the "feedbackMessage" to the "correctAnswerMessage"
         // Increase userProgress.correctAnswers by 1
-      // NO:
+      // NO: 
         // Set the "feedbackMessage" to the "incorrectAnswerMessage"
     // 2. The quizForm should disappear
     // 3. The feedbackDisplay should be called to appear

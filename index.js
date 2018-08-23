@@ -16,6 +16,7 @@ function handleStartingDisplay() {
     // Display a quiz question
     renderQuizDisplay(prevCorrectAnswer);
 
+    // Event handling testing
     if(TESTING){
       console.log(`The "Start quiz button" was clicked!
         prevCorrectAnswer: ${prevCorrectAnswer}`);
@@ -23,12 +24,14 @@ function handleStartingDisplay() {
 
   });
 
-
+  //handleStartingDisplay testing
   if(TESTING) {
     console.log(`"handleStartingDisplay" was called.`);
   }
 }
 
+
+//===========================================================================//
 
 //QUIZ DISPLAY (quizDisplay, quizForm)
 
@@ -37,14 +40,10 @@ function renderQuizDisplay(prevCorrectAnswer) {
   // as a template string, within which the renderQuizForm function is called.
   
   //Update userProgress.questionNumber to reflect the new question
-  
     userProgressGlobal.questionNumber += 1;
     
-
-    
-    // 4. userProgress.questionNumber should increase by 1.
-    // 5. The "userProgressElement" should be rendered.
-
+  //Render the "userProgressElement" should be rendered.
+    renderUserProgressElement();
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
@@ -79,11 +78,8 @@ function renderQuizForm(prevCorrectAnswer) {
   
   // Create the quizForm innterContent
   let quizFormInnerHTML = `
-    <h2>TODO: Integrate dynamically generated quizQuestion</h2>
-    <fieldset>
-      <p>TODO: Integrate dynamically generated quizOptions</p>
-    </fieldset>
-  `;
+    <h2>${quizDataGlobal[correctAnswer].companyQuestion}</h2>
+    <fieldset></fieldset>`;
   
   $('.quiz-form').html(quizFormInnerHTML);
   
@@ -94,15 +90,19 @@ function renderQuizForm(prevCorrectAnswer) {
     console.log(`"renderQuizForm" was called.
       - prevCorrectAnswer: ${prevCorrectAnswer}
       - quizOptions: ${quizOptions}
-      - correctAnswer: ${correctAnswer}`);
+      - correctAnswer: ${correctAnswer}
+      - Correct Company: ${quizDataGlobal[correctAnswer].companyName}
+    `);
   }
 }
 
   function selectQuizOptions() {
-    // This function will select 4 IDs from quizDataGlobal, representing
+    // TODO: This function will select 4 IDs from quizDataGlobal, representing
     // the four companies to be used
     
-    return ["placeHolder 1","placeHolder 2","placeHolder 3","placeHolder 4"];
+    
+    
+    return [0,1,2,3]; // TESTING VALUE
     
     if(TESTING) {
       console.log(`"selectQuizOptions" was called.`);
@@ -110,10 +110,10 @@ function renderQuizForm(prevCorrectAnswer) {
   }
   
   function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
-    // This function selects a correct answer that doesn't match the previous
+    // TODO: This function selects a correct answer that doesn't match the previous
     // correct answer.
     
-    return "placeHolder: correctAnswer";
+    return 0; //TESTING VALUE
     
     if(TESTING) {
       console.log(`"selectCorrectAnswer" was called.`);
@@ -122,12 +122,11 @@ function renderQuizForm(prevCorrectAnswer) {
   
   function renderQuizOption(index) {
     // This function renders the label->input HTML code for a single quizOption
-      // TODO: Use index argument to draw content from quizDataGlobal
-      
+
       let quizOptionInnerHTML = `
         <label class="quiz-option">
           <input type="radio" name="answer" value="${index}">
-            ${index}
+            ${quizDataGlobal[index].companyName}
           </input>
         </label>
       `
@@ -140,9 +139,7 @@ function renderQuizForm(prevCorrectAnswer) {
     
   }
 
-
-
-
+//===========================================================================//
 
 // QUIZ FORM SUBMISSION
   // When a quizForm is submitted:
@@ -164,11 +161,21 @@ function renderQuizForm(prevCorrectAnswer) {
     // If the user presses the "endQuiz" buttong: Call the "finalResultsDisplay" to appear
     
 //USER PROGRESS ELEMENT (userProgressElement)
+function renderUserProgressElement() {
   // When the userProgressElement is rendered:
     // Question Number = userProgress.questionNumber
     // Answered correctly = userProgress.correctAnswers
     // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber - 1)
       // This adjusts for the fact that questionNumber is advanced one beyond how many questions they've answered.
+
+  if(TESTING) {
+    console.log(`"renderUserProgressElement" was called.`);
+  }
+  
+}
+
+
+
     
 //FINAL RESULTS DISPLAY (finalResultsDisplay)
   // When the finalResultsDisplay is called to appear:

@@ -250,8 +250,8 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
     <div class="question-feedback-display">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
-      <button role="button" class="next-question-button">Next question</button>
-      <button role="button" class="finish-button">Finish quiz</button>
+      <button role="button" class="next-question-button js-next-question-button">Next question</button>
+      <button role="button" class="finish-quiz-button js-finish-quiz-button">Finish quiz</button>
     </div>
   `;
   
@@ -268,16 +268,39 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
 
 function handleFeedbackDisplay() {
   
+  // When the user clicks "Next question", render a new quiz question
+  $('main').on('click', '.js-next-question-button', function(event){
+    event.preventDefault();
+    
+    // Render another question, and the cycle continues!
+    renderQuizDisplay();
+    
+    // Testing for "Next question" button handling
+    if (TESTING) {
+      console.log(`"Next Question" button was clicked`);
+    }
+    
+  });
+  
+  $('main').on('click', '.js-finish-quiz-button', function(event) {
+    event.preventDefault();
+    
+    renderFinalResultsDisplay();
+    
+    // Testing for "Finish quiz" button handling
+    if (TESTING) {
+      console.log(`"Finish quiz" button was clicked`);
+    }
+    
+  });
+  
+  // When the user clicks "Finish quiz", take them to the final results display
   
   if (TESTING) {
     console.log(`"handleFeedbackDisplay" was called.`);
   }
   
 }
-
-  // The user has two options from the feedbackDisplay:
-    // If the user presses the "nextQuestion" button: call quizForm to appear
-    // If the user presses the "endQuiz" buttong: Call the "finalResultsDisplay" to appear
     
 //USER PROGRESS ELEMENT (userProgressElement)
 function renderUserProgressElement() {
@@ -293,10 +316,32 @@ function renderUserProgressElement() {
   
 }
 
+//===========================================================================//
 
+//FINAL RESULTS DISPLAY
 
-    
-//FINAL RESULTS DISPLAY (finalResultsDisplay)
+function renderFinalResultsDisplay() {
+  
+  // Calculate & format percentage correct
+  
+  let percentageCorrect = ((userProgressGlobal.correctAnswers
+                            / userProgressGlobal.questionNumber)
+                           * 100)
+                           .toFixed(1);
+  
+  let finalResultsDisplayInnerHTML = `
+    <div class="final-results-display">
+      <h2>Final results</h2>
+      <p>Total questions: ${userProgressGlobal.questionNumber}</p>
+      <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>
+      <p>Performance: ${percentageCorrect}%</p>
+      <button role="button" class="start-button">Start new quiz</button>
+    </div>
+  `;
+  
+  $('main').html(finalResultsDisplayInnerHTML);
+  
+  
   // When the finalResultsDisplay is called to appear:
     // 1. The userProgressElement content should be cleared (to avoid duplicate content)
     // 2. The finalResultsDisplay is rendered:
@@ -305,6 +350,19 @@ function renderUserProgressElement() {
       // % Correct = userProgress.correctAnswers / (userProgress.questionNUmber)
     // If the user presses the "startNewQuiz" button:
       // Call the handleQuizApp function, which re-initializes the system
+  
+  
+  if(TESTING) {
+    console.log(`"renderFinalResultsDisplay" was called.
+      Total Questions: ${userProgressGlobal.questionNumber}
+      Total Correct: ${userProgressGlobal.correctAnswers}
+      Performance: ${percentageCorrect}%
+    `);
+  }
+}
+
+
+
 
 // DOCUMENT LOAD (handleQUizApp function)
   // When the user loads the document, the "startingDisplay" appears automatically.

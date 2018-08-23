@@ -351,7 +351,8 @@ function renderFinalResultsDisplay() {
   
   // Hide the question number and user score from the top Nav
   
-  $('.js-user-progress-element').html("");
+  $('.js-header-question-number').html("");
+  $('.js-header-user-score').html("");
   
   // Calculate & format percentage correct
   
@@ -366,7 +367,7 @@ function renderFinalResultsDisplay() {
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>
       <p>Performance: ${percentageCorrect}%</p>
-      <button role="button" class="start-new-quiz-button js-start-quiz-button">Start new quiz</button>
+      <button role="button" class="start-new-quiz-button js-start-new-quiz-button">Start new quiz</button>
     </div>
   `;
   
@@ -385,6 +386,22 @@ function renderFinalResultsDisplay() {
   }
 }
 
+function handleFinalResultsDisplay () {
+  
+  $('main').on('click', '.js-start-new-quiz-button', function(event) {
+    
+    //Reload the page, taking the user back to the Start Display
+    location.reload();
+    
+  });
+  
+  
+  if (TESTING) {
+    console.log(`"handleFinalResultsDisplay" was called"`);
+  }
+}
+
+
 // DOCUMENT LOAD (handleQUizApp function)
   // When the user loads the document, the "startingDisplay" appears automatically.
 
@@ -394,6 +411,7 @@ function handleQuizApp() {
   handleStartingDisplay();
   handleQuizAnswer();
   handleFeedbackDisplay();
+  handleFinalResultsDisplay();
 
   if(TESTING) {
     console.log(`"handleQuizApp" was called`);

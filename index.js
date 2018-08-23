@@ -4,7 +4,8 @@
 
 function handleStartingDisplay() {
   
-  $('.js-start-quiz-button').on('click', function(event){
+  $('main').on('click', '.js-start-quiz-button', function(event){
+    event.preventDefault();
     
     //Initialize previous correct answer tracking, to avoid repeat questions
     let prevCorrectAnswer;
@@ -43,7 +44,7 @@ function renderQuizDisplay(prevCorrectAnswer) {
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
     <div class="quiz-form-container">
-      <form class="quiz-form" required>
+      <form class="quiz-form">
       </form>
     </div>
   `;
@@ -57,6 +58,9 @@ function renderQuizDisplay(prevCorrectAnswer) {
     console.log(`"renderQuizDisplay" was called.
       userProgressGlobal.questionNumber: ${userProgressGlobal.questionNumber}
     `);
+    $('.quiz-form-container').append(
+      `<button role="button" class="js-start-quiz-button">TESTING:<br/>Generate new question</button>`
+      );
   }
   
 }
@@ -71,10 +75,11 @@ function renderQuizForm(prevCorrectAnswer) {
   let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
   
   // Create the quizForm innterContent
+  //  (correctAnswer is passed out of the function as the submit button's name)
   let quizFormInnerHTML = `
     <h2>${quizDataGlobal[correctAnswer].companyQuestion}</h2>
     <fieldset></fieldset>
-    <input type="submit" class="quiz-submit-button"></input>
+    <input type="submit" class="quiz-submit-button" name="${correctAnswer}"></input>
     `;
   
   $('.quiz-form').html(quizFormInnerHTML);
@@ -109,7 +114,7 @@ function selectQuizOptions(max) {
   
   return array;
   
-  if(TESTING) {
+  if (TESTING) {
     console.log(`"selectQuizOptions" was called.
       array: ${array}
     `);
@@ -117,7 +122,7 @@ function selectQuizOptions(max) {
 }
   
 function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
-  // TODO: This function selects a correct answer that doesn't match the previous
+  // This function selects a correct answer that doesn't match the previous
   // correct answer.
   
   let randAnswer = prevCorrectAnswer;
@@ -128,6 +133,9 @@ function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
     randAnswer = quizOptions[Math.floor(Math.random() * 4)];
     
   }
+  
+  // Update prevCorrectAnswer for next time.
+  prevCorrectAnswer = randAnswer;
   
   return randAnswer; 
   
@@ -163,15 +171,80 @@ function renderQuizOption(index) {
 //===========================================================================//
 
 // QUIZ FORM SUBMISSION
-  // When a quizForm is submitted:
+
+function handleQuizAnswer() {
+  
+  $('main').on('click', '.quiz-submit-button', function(event) {
+    event.preventDefault();
+    
+    // Get form value
+    let answerVal = $('input[name="answer"]:checked').val();
+    
+    // Get correct answer from submit button
+    let correctAnswer = $('.quiz-submit-button').attr('name');
+    
+    // If no response...
+    if (!answerVal) {
+      alert('Please select an answer.');
+      return;
+    }
+    
+    console.log("Evaluating answer...");
+    
+      //Check Answer
+      let boolCorrect = processQuizAnswer(answerVal, correctAnswer);
+    
+    //Quiz answer submission testing
+    if(TESTING) {
+      console.log(`Quiz answer submitted!
+        answerVal: ${answerVal}
+        correctAnswer: ${correctAnswer}
+        boolCorrect: ${boolCorrect}
+        Company: ${quizDataGlobal[answerVal].companyName}
+      `);
+    }
+    
+  });
+  
+  //handleQuizAnswer testing
+  if(TESTING){
+    console.log(`"handleQuizAnswer" was called.`);
+  }
+}
+
+function processQuizAnswer(answerVal, correctAnswer) {
+  
+  //Check for correct answer
+  let boolCorrect = (answerVal === correctAnswer);
+  
+  //If correct, update userProgressGlobal
+  if (boolCorrect) {
+    userProgressGlobal.correctAnswers += 1;
+  }
+  
+  return boolCorrect;
+  
+  console.log(`"processQuizAnswer" was called.
+    answerVal: ${answerVal}
+    correctAnswer: ${correctAnswer}
+    boolCorrect: ${boolCorrect}
+  `)
+  
+}
+
+
+      // When a quizForm is submitted:
     // 1. Did they answer correctly? (quizForm.val() === correctAnswer?)
       // YES:
         // Set the "feedbackMessage" to the "correctAnswerMessage"
         // Increase userProgress.correctAnswers by 1
       // NO: 
         // Set the "feedbackMessage" to the "incorrectAnswerMessage"
-    // 2. The quizForm should disappear
-    // 3. The feedbackDisplay should be called to appear
+      // 3. The feedbackDisplay should be called to appear
+    
+
+//===========================================================================//
+
 
 //FEEDBACK DISPLAY (feedbackDisplay)
   //When feedbackDisplay is called to appear, it is populated with the following:
@@ -215,6 +288,7 @@ function handleQuizApp() {
   // Subsidiary handler functions get called here
   
   handleStartingDisplay();
+  handleQuizAnswer();
   
   if(TESTING) {
     console.log(`"handleQuizApp" was called`);

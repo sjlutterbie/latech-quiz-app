@@ -40,7 +40,9 @@ const quizDataGlobal = [
   },
 ];
 
+// QUESTION LIST (Order to be randomized)
 
+let questionList = [];
 
 // USER PROGRESS DATA
 

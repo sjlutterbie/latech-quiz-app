@@ -149,11 +149,10 @@ function renderQuizOption(index) {
   // This function renders the label->input HTML code for a single quizOption
 
     let quizOptionInnerHTML = `
-      <label class="quiz-option md-whiteframe-4dp" for="${index}">
+        <div class="quiz-option-container">
         <input type="radio" name="answer" id="${index}" value="${index}">
-          ${quizDataGlobal[index].companyName}
-        </input>
-      </label>
+        <label class="quiz-option md-whiteframe-4dp" for="${index}">${quizDataGlobal[index].companyName.trim()}</label>
+        </div>
     `
     
     $('fieldset').append(quizOptionInnerHTML);
@@ -250,8 +249,8 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
     <div class="question-feedback-display md-whiteframe-15dp">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
-      <button role="button" class="next-question-button js-next-question-button md-whiteframe-4dp">Next question</button>
-      <button role="button" class="finish-quiz-button js-finish-quiz-button md-whiteframe-4dp">Finish quiz</button>
+      <button role="button" class="next-question-button js-next-question-button md-whiteframe-4dp">Next</button>
+      <button role="button" class="finish-quiz-button js-finish-quiz-button md-whiteframe-4dp">Finish</button>
     </div>
   `;
   
@@ -361,7 +360,7 @@ function renderFinalResultsDisplay() {
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>
       <p>Performance: ${percentageCorrect}%</p>
-      <button role="button" class="start-new-quiz-button js-start-new-quiz-button md-whiteframe-4dp">Start new quiz</button>
+      <button role="button" class="start-new-quiz-button js-start-new-quiz-button md-whiteframe-4dp">Restart</button>
     </div>
   `;
   

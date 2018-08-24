@@ -125,6 +125,7 @@ body {
     border: none;
     height: 45px;
     width: 80px;
+    border-radius: 4px;
   }
     
     button:hover, input[type="submit"]:hover {
@@ -149,6 +150,7 @@ body {
       color: #000;
       padding: 10px;
       text-align: center;
+      border-radius: 4px;
     }
     
   /* Quiz form */
@@ -158,10 +160,13 @@ body {
       background-color: #fff;
       color: #000;
       padding: 10px;
+      border-radius: 5px;
     }
     
       h2 {
         text-align: center;
+        margin: 0px auto 5px auto;
+        font-size: 18px;
       }
       
       .quiz-form {
@@ -175,16 +180,20 @@ body {
           margin: 0px;
           border: none;
           padding: 0px;
+          margin-bottom: 10px;
         }
+        
         
         fieldset label {
           display: flex;
           flex-direction: column;
+          justify-content: center;
           align-content: center;
           width: 100%;
           background-color: var(--secondary-light);
           color: var(--on-secondary-light);
-          margin-bottom: 10px;
+          margin: 10px 0px 10px 0px;
+          border-radius: 4px;
         }
         
           fieldset label:hover {
@@ -195,7 +204,7 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12);
           }
           
-          fieldset label:active {
+          fieldset input[type="radio"]:active+label {
             background-color: var(--secondary-dark);
             color: var(--on-secondary-dark);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -203,8 +212,13 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
           }
           
+          fieldset input[type="radio"]:checked+label {
+            background-color: var(--secondary-color);
+            color: var(--on-secondary-color);
+          }
+          
         fieldset input {
-          opacity: 0;
+          display: none;
         }
       
       .quiz-option {
@@ -220,6 +234,7 @@ body {
       color: #000;
       padding: 10px;
       text-align: center;
+      border-radius: 4px;
     }
     
   /* Final results disply */
@@ -231,6 +246,7 @@ body {
       color: #000;
       padding: 10px;
       text-align: center;
+      border-radius: 4px;
     }
 
       
@@ -246,7 +262,7 @@ footer {
 
 /* ===LARGE SCREEN ADJUSTMENTS=== */
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 550px) {
   
   header {
     flex-wrap: nowrap;
@@ -273,11 +289,22 @@ footer {
         height: 100%;
       }
       
-      .user-progress-element li {
-      }
-      
-      fieldset label {
+      div.quiz-option-container{
+        border: 1px solid red;
         width: 49%;
+        margin: 0px;
+        padding: 0px;
       }
-      
+        
+        fieldset label {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-content: center;
+          background-color: var(--secondary-light);
+          color: var(--on-secondary-light);
+          margin-bottom: 10px;
+          border-radius: 4px;
+        }
+
 }

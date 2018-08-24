@@ -1,31 +1,72 @@
 'use strict';
 
-//STARTING DISPLAY
+/*  CODE OUTLINE
+* 
+* 1. Starting Display
+*    - (startingDisplay built in default HTML)
+*    - Event handler
+* 2. User Progress Display (in page header)
+*    - Update Question Number
+*    - Update User Score
+* 3. Quiz Display
+*    - Build quizDisplay
+*    - Event handlers
+* 4. Quiz Response Handling
+*    - Event handler
+*    - Support functions
+* 5. Feedback Display
+*    - Build feedbackDisplay
+*    - Event handlers
+* 6. Final Results Display
+*    - Build finalResultsDisplay
+*    - Event handlers
+* 7. Init & document load functions
+* 
+* NOTE: Global variables loaded in HTML, from globalVars.js
+*
+*/
+
+
+/* === 1. STARTING DISPLAY === */
 
 function handleStartingDisplay() {
-  
+  // When user clicks the "Start" button, initialize the quiz setup and
+  // progress to displaying the first question.
+
   $('main').on('click', '.js-start-quiz-button', function(event){
     event.preventDefault();
     
     //Initialize previous correct answer tracking, to avoid repeat questions
     let prevCorrectAnswer;
+      //TODO: Replace prevCorrectAnswer path with a shuffled array.
 
     // Display a quiz question
     renderQuizDisplay(prevCorrectAnswer);
 
-    // Event handling testing
-    if(TESTING){
-      console.log(`The "Start quiz button" was clicked!
-        prevCorrectAnswer: ${prevCorrectAnswer}`);
-    }
-
   });
 
-  //handleStartingDisplay testing
-  if(TESTING) {
-    console.log(`"handleStartingDisplay" was called.`);
-  }
 }
+
+
+/* === 2. USER PROGRESS DISPLAY === */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //===========================================================================//

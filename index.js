@@ -189,7 +189,7 @@ function handleQuizAnswer() {
     let boolCorrect = processQuizAnswer(answerVal, correctAnswer);
       
     // render Feedback display
-    renderFeedbackDisplay(boolCorrect, correctAnswer);
+    renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer);
     
     //Quiz answer submission testing
     if(TESTING) {
@@ -232,7 +232,7 @@ function processQuizAnswer(answerVal, correctAnswer) {
 
 //FEEDBACK DISPLAY (feedbackDisplay)
 
-function renderFeedbackDisplay(boolCorrect, correctAnswer) {
+function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer) {
   // This function displays quiz item feedback.
   
   // Update header user score
@@ -240,8 +240,8 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   
   // Generate response text
   let feedbackText = boolCorrect ?
-    `Yes, ${quizDataGlobal[correctAnswer].companyName} is correct!` :
-    `I'm sorry, ${quizDataGlobal[correctAnswer].companyName} is incorrect.`;
+    `Yes, ${quizDataGlobal[answerVal].companyName} is correct!` :
+    `I'm sorry, ${quizDataGlobal[answerVal].companyName} is incorrect.`;
   
   //Render Feedback Display
   

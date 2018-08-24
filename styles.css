@@ -45,6 +45,7 @@
 
 html{
   background-color: var(--secondary-light);
+  z-index: 0;
 }
 
 html, body {
@@ -52,6 +53,7 @@ html, body {
 }
 
 body {
+  z-index: 1;
   display: flex;
   flex-flow: column nowrap;
   max-width: 1000px;
@@ -65,16 +67,18 @@ body {
 
   header {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: stretch;
   }
   
     .site-title {
+      z-index: 8;
       order: 1;
       background-color: var(--primary-dark);
       color: var(--on-primary-dark);
-      width: 100%;
+      /* width: 100%; */
+      flex-grow: 1;
     }
       
       h1 {
@@ -86,15 +90,11 @@ body {
       }
     
     .user-progress-element {
+      z-index: 4;
       order: 2;
-      width: 100%;
+      flex-grow: 1;
       background: var(--primary-color);
       color: var(--on-primary-color);
-      
-      /* Material Design Responsive Manual Override */
-      box-shadow:0px 1px 8px 0px rgba(0, 0, 0, 0.2),
-        0px 3px 4px 0px rgba(0, 0, 0, 0.14),
-        0px 3px 3px -2px rgba(0, 0, 0, 0.12);
     }
     
       .user-progress-element ul {
@@ -111,6 +111,7 @@ body {
 
 /* Main content */
   main {
+    z-index: 1;
     display: flex;
     flex: 1 0 auto;
     flex-flow: row wrap;
@@ -144,6 +145,7 @@ body {
   /* Starting display */
   
     .starting-display {
+      z-index: 12;
       width: 90%;
       max-width: 500px;
       background-color: #fff;
@@ -156,6 +158,7 @@ body {
   /* Quiz form */
   
     .quiz-form-container {
+      z-index: 12;
       width: 90%;
       background-color: #fff;
       color: #000;
@@ -227,6 +230,7 @@ body {
   /* Question feedback display */
   
     .question-feedback-display {
+      z-index: 12;
       width: 90%;
       max-width: 500px;
       background-color: #fff;
@@ -239,6 +243,7 @@ body {
   /* Final results disply */
   
     .final-results-display {
+      z-index: 12;
       width: 90%;
       max-width: 500px;
       background-color: #fff;
@@ -252,6 +257,7 @@ body {
 /* Footer */
 
 footer {
+  z-index: 8;
   flex-shrink: 0;
   padding: 5px;
   text-align: center;
@@ -262,24 +268,44 @@ footer {
 /* ===LARGE SCREEN ADJUSTMENTS=== */
 
 @media only screen and (min-width: 550px) {
-  
+ 
   header {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+    z-index: 8;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+    
+    /* Material Design: .md-whiteframe-7dp */
+    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2),
+    0px 7px 10px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 16px 1px rgba(0, 0, 0, 0.12); 
   }
   
-    h1 {
-      text-align: left;
+    .site-title {
+      z-index: none;
+      order: 1;
+      background-color: var(--primary-dark);
+      color: var(--on-primary-dark);
+      
+      /* Material Design responsive override */
+      box-shadow: none;
     }
+      
+      h1 {
+        text-align: left;
+      }
     
     .user-progress-element {
-      /* Match site-title on larger displays  */
-      background: inherit;
-      color: inherit;
-      box-shadow: none;
-    
-    }
-    
+      z-index: none;
+      order: 2;
+      flex-grow: 1;
+      background: var(--primary-dark);
+      color: var(--on-primary-dark);
+      
+      /* Material Design responsive override */
+      box-shadow:none;
+    } 
+ 
       .user-progress-element ul {
         text-align: right;
         display: flex;
@@ -305,8 +331,7 @@ footer {
         width: 40%;
         flex-grow: 0;
       }
-        
-
+      
 }
 
 @media only screen and (max-height: 330px ) {

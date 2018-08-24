@@ -33,20 +33,57 @@
 function handleStartingDisplay() {
   // When user clicks the "Start" button, initialize the quiz setup and
   // progress to displaying the first question.
-
+  
+  // When the user clicks the "Start" button...
   $('main').on('click', '.js-start-quiz-button', function(event){
     event.preventDefault();
     
-    // Initialize previous correct answer tracking, to avoid repeat questions
-    let prevCorrectAnswer;
-      // TODO: Replace prevCorrectAnswer path with a shuffled array.
+    
+    // ... Build the question list
+    questionList = buildQuestionList(quizDataGlobal.length);
+    
+    console.log("handleStartingDisplay");
+    console.log(questionList);
 
     // Display a quiz question
-    renderQuizDisplay(prevCorrectAnswer);
+    renderQuizDisplay(questionList);
 
   });
 
 }
+
+  function buildQuestionList (length) {
+    // Build an array that includes a shuffled list of array IDs for a given
+    // length array.
+  
+    // Create empty array
+    let array = [];
+    // Populate with indexes
+    for (let i = 0; i < length; i++) {
+      array.push(i);
+    }
+    
+    // Shuffle array
+    array = shuffleArray(array);
+    
+    return array;
+  
+  }
+  
+  function shuffleArray(array) {
+    // Shuffles the order of items in an array using the Fisher-Yates shuffle
+    // algorithm
+    
+    // Starting from the END of the array and working backwards...
+    for (let i = array.length - 1; i > 0; i--) {
+      // Select an earlier item in the array
+      const j = Math.floor(Math.random() * (i + 1));
+      // Switch the two items in the array
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+     
+    return array;
+  }
 
 /* ================================ *
 *  === 2. USER PROGRESS DISPLAY === *
@@ -86,7 +123,7 @@ function renderHeaderUserScore () {
  * === 3. QUIZ DISPLAY === *
  * ======================= */
 
-function renderQuizDisplay(prevCorrectAnswer) {
+function renderQuizDisplay(questionList) {
   // Advances the quiz game and displays a new quiz question
   
   // Update the question number and user progress display
@@ -103,9 +140,9 @@ function renderQuizDisplay(prevCorrectAnswer) {
     
     // Update DOM
     $('main').html(quizDisplayHTML);
-    
+  
   // Build the Quiz Form
-  renderQuizForm(prevCorrectAnswer);
+  renderQuizForm(questionList);
   
 }
 
@@ -120,16 +157,24 @@ function renderQuizDisplay(prevCorrectAnswer) {
     
   }
 
-  function renderQuizForm(prevCorrectAnswer) {
+  function renderQuizForm() {
     //Generate a quiz question and build the form HTML
     
     // Build a quiz question
-      // Select Quiz Options
-      let quizOptions = selectQuizOptions(4, quizDataGlobal.length);
-      // Select correct answer
-      let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
-
-
+      // If the questionList is empty, rebuild it.
+      if (questionList.length === 0) {
+        questionList = buildQuestionList(quizDataGlobal.length);
+      }
+      
+    // Choose the next question (aka the next correct answer)
+    let correctAnswer = questionList.pop();
+    
+    console.log("renderQuizForm");
+    console.log(`correctAnswer: ${correctAnswer}`);
+    
+    // Select the rest of the question options
+    let quizOptions = selectQuizOptions(correctAnswer, 4, quizDataGlobal.length);
+    
     // Build the Quiz Form content
     // NOTE: The correct answer is passed out via the submit button's name
     let quizFormHTML = `
@@ -152,10 +197,11 @@ function renderQuizDisplay(prevCorrectAnswer) {
 
   }
 
-    function selectQuizOptions(optCount, maxIndex) {
-      // Generates an array of optCount indexes for an array of length maxIndex
+    function selectQuizOptions(correctAnswer, optCount, maxIndex) {
+      // Generates an array of optCount indexes, that includes correctAnswer,
+      // for an array of length maxIndex
       
-      let array = [];
+      let array = [correctAnswer];
       
       while (array.length < optCount) {
         let rand = Math.floor(Math.random() * maxIndex);
@@ -167,26 +213,6 @@ function renderQuizDisplay(prevCorrectAnswer) {
       
       return array;
       
-    }
-  
-    function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
-      // Select a correct answer from provided quiz options.
-      // To avoid repetition, the correct answer can't have the same index as
-      // the previous correct answer.
-      
-      // Start with the new answer = the previous answer, for the while loop.
-      let newAnswer = prevCorrectAnswer;
-      
-      // If the new answer is the same as the previous answer...
-      while (newAnswer === prevCorrectAnswer) {
-        // ... generate a new correct answer
-        newAnswer = quizOptions[Math.floor(Math.random() * quizOptions.length)];
-      }
-      
-      // Update prevCorrectAnswer for the next go around.
-      prevCorrectAnswer = newAnswer;
-      
-      return newAnswer; 
     }
  
     function renderQuizOption(index) {
@@ -237,7 +263,7 @@ function handleQuizAnswer() {
     let boolCorrect = processQuizAnswer(answerVal, correctAnswer);
       
     // render Feedback display
-    renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer);
+    renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer, questionList);
   
   });
   
@@ -263,9 +289,11 @@ function handleQuizAnswer() {
 *  === 5. FEEDBACK DISPLAY === *
 *  =========================== */
 
-function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer) {
+function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer, questionList) {
   // Build the Quiz Item Feedback Display, including the user score in the
   // page header.
+    // NOTE: To adhere to Thinkful project requirements, the "Exit" button does
+    // not display until the user has answered at least 5 questions.
 
   // Update user score in page header
   renderHeaderUserScore();
@@ -275,13 +303,20 @@ function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer) {
     `Yes, ${quizDataGlobal[answerVal].companyName} is correct!` :
     `I'm sorry, ${quizDataGlobal[answerVal].companyName} is incorrect.`;
   
+  // Include the "Exit" button if the questionNumber is >= 5
+  let finishButtonHTML = (userProgressGlobal.questionNumber >= 5) ?
+  `<button role="button"
+    class="md-whiteframe-4dp finish-quiz-button js-finish-quiz-button">
+    Exit</button>` : "";
+    
+  
   // Build Feedback Display HTML
   let feedbackDisplayHTML = `
     <div class="md-whiteframe-15dp question-feedback-display">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
       <button role="button" class="md-whiteframe-4dp next-question-button js-next-question-button">Continue</button>
-      <button role="button" class="md-whiteframe-4dp finish-quiz-button js-finish-quiz-button">Exit</button>
+      ${finishButtonHTML}
     </div>`;
   
   // Update DOM
@@ -334,8 +369,6 @@ function renderFinalResultsDisplay() {
                             userProgressGlobal.questionNumber,
                             1);
                             
-    //TODO: This calculation has been run earlier -> split it into a function
-  
   // Build the Final Results Display HTML
   let finalResultsDisplayHTML = `
     <div class="md-whiteframe-15dp final-results-display">

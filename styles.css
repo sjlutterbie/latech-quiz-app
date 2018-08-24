@@ -40,6 +40,7 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Roboto', 'San Francisco', sans-serif;
 }
 
 html{
@@ -81,6 +82,7 @@ body {
         font-size: 27px;
         margin: 0px;
         padding: 10px;
+        font-weight: normal;
       }
     
     .user-progress-element {
@@ -121,12 +123,22 @@ body {
     background-color: var(--primary-light);
     color: var(--on-primary-light);
     border: none;
+    height: 45px;
+    width: 80px;
   }
+    
+    button:hover, input[type="submit"]:hover {
+      background-color: var(--primary-color); 
+      color: var(--on-primary-color);
+      box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+        0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
+    }
   
-  button:active, input[type="submit"]:active {
-    background-color: var(--primary-color);
-    color: var(--on-primary-color);
-  }
+    button:active, input[type="submit"]:active {
+      background-color: var(--primary-dark);
+      color: var(--on-primary-dark);
+    }
   
   /* Starting display */
   
@@ -170,6 +182,14 @@ body {
           background-color: var(--primary-light);
           margin-bottom: 10px;
         }
+        
+          fieldset label:hover {
+            background-color: var(--primary-color);
+            color: var(--on-primary-color);
+            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+          }
       
   /* Question feedback display */
   

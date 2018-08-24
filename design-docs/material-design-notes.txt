@@ -5,7 +5,7 @@ Elevation Layers:
 html
     body (+1)
             site-title (+7)
-        user-progress-element (+3)* (MANUAL OVERRIDE)
+        user-progress-element (+3) (MANUAL OVERRIDE)
                 starting-display (+15)
                     start-quiz-button (+4)
                 quiz-form-container (+15)

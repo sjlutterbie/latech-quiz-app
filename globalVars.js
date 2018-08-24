@@ -1,9 +1,5 @@
 'use strict';
 
-// TOGGLE TESTING MODE
-
-const TESTING = true;
-
 // QUIZ DATA
 
 const quizDataGlobal = [
@@ -52,11 +48,3 @@ const userProgressGlobal = {
   questionNumber: 0,
   correctAnswers: 0
 };
-
-if(TESTING){
-  console.log(`Global data loaded:
-    quizDataGlobal:`);
-  console.log(quizDataGlobal);
-  console.log(`   userProgressGlobal:`);
-  console.log(userProgressGlobal);
-}

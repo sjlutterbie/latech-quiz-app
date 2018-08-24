@@ -178,7 +178,7 @@ body {
         text-align: center;
       }
       
-        .pseudo-fieldset {
+        .fieldset-flex-container {
           text-align: center;
           margin: 0px;
           border: none;
@@ -186,7 +186,7 @@ body {
         }
         
         
-        .pseudo-fieldset label {
+        .fieldset-flex-container label {
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -198,7 +198,7 @@ body {
           border-radius: 4px;
         }
         
-          .pseudo-fieldset label:hover {
+          .fieldset-flex-container label:hover {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -206,7 +206,7 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12);
           }
           
-          .pseudo-fieldset input[type="radio"]:active+label {
+          .fieldset-flex-container input[type="radio"]:active+label {
             background-color: var(--secondary-dark);
             color: var(--on-secondary-dark);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -214,12 +214,12 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
           }
           
-          .pseudo-fieldset input[type="radio"]:checked+label {
+          .fieldset-flex-container input[type="radio"]:checked+label {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
           }
           
-        .pseudo-fieldset input {
+        .fieldset-flex-container input {
           display: none;
         }
       
@@ -320,7 +320,7 @@ footer {
         padding: 0px;
       }
       
-    .pseudo-fieldset {
+    .fieldset-flex-container {
       display: flex;
       flex-flow: row wrap;
       justify-content: space-between;

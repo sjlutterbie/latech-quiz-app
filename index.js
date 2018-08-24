@@ -59,7 +59,7 @@ function renderHeaderQuestionNumber() {
   let questionNumberString = `Question #${userProgressGlobal.questionNumber}`;
   
   // Update DOM
-  $j('.js-header-question-number').html(questionNumberString);
+  $('.js-header-question-number').html(questionNumberString);
   
 }
 
@@ -67,14 +67,15 @@ function renderHeaderUserScore () {
   // Updates the User score tracker in the page header
   
   // Calculate percentage, limit to 1 decimal place
-  let correctPercentage = ((userProgressGlobal.correctAnswers
-                           / userProgressGlobal.questionNumber)
-                           * 100).toFixed(1);
+  let percentageCorrect = calculatePercentageCorrect(
+                            userProgressGlobal.correctAnswers,
+                            userProgressGlobal.questionNumber,
+                            1);
 
   // Compose string to display
   let userScoreString = `Correct: ${userProgressGlobal.correctAnswers}`
                         + `/${userProgressGlobal.questionNumber}`
-                        + ` (${correctPercentage}%)`;
+                        + ` (${percentageCorrect}%)`;
   
   // Update DOM
   $('.js-header-user-score').html(userScoreString);
@@ -123,8 +124,11 @@ function renderQuizDisplay(prevCorrectAnswer) {
     //Generate a quiz question and build the form HTML
     
     // Build a quiz question
-    let quizOptions, correctAnswer = buildQuizQuestion(prevCorrectAnswer);
-    
+      // Select Quiz Options
+      let quizOptions = selectQuizOptions(4, quizDataGlobal.length);
+      // Select correct answer
+      let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
+
 
     // Build the Quiz Form content
     // NOTE: The correct answer is passed out via the submit button's name
@@ -148,56 +152,42 @@ function renderQuizDisplay(prevCorrectAnswer) {
 
   }
 
-    function buildQuizQuestion(prevCorrectAnswer) {
-      // Builds a quiz question by selecting four potential options, and
-      // choosing a "correct answer" from within them.
+    function selectQuizOptions(optCount, maxIndex) {
+      // Generates an array of optCount indexes for an array of length maxIndex
       
-      // Select 4 quiz options
-      let quizOptions = selectQuizOptions(4, quizDataGlobal.length);
+      let array = [];
       
-      // Select a correct answer from within the options
-      let correctAnswer = selectCorrectAnswer(quizOptions, prevCorrectAnswer);
+      while (array.length < optCount) {
+        let rand = Math.floor(Math.random() * maxIndex);
+        // If the rand isn't already in the array, add it. (Prevents duplicates)
+        if (!array.includes(rand)){
+          array.push(rand);
+        }
+      }
       
-      return quizOptions, correctAnswer;
+      return array;
       
     }
   
-      function selectQuizOptions(optCount, maxIndex) {
-        // Generates an array of optCount indexes for an array of length maxIndex
-        
-        let array = [];
-        
-        while (array.length < optCount) {
-          let rand = Math.floor(Math.random() * max);
-          // If the rand isn't already in the array, add it. (Prevents duplicates)
-          if (!array.includes(rand)){
-            array.push(rand);
-          }
-        }
-        
-        return array;
-        
+    function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
+      // Select a correct answer from provided quiz options.
+      // To avoid repetition, the correct answer can't have the same index as
+      // the previous correct answer.
+      
+      // Start with the new answer = the previous answer, for the while loop.
+      let newAnswer = prevCorrectAnswer;
+      
+      // If the new answer is the same as the previous answer...
+      while (newAnswer === prevCorrectAnswer) {
+        // ... generate a new correct answer
+        newAnswer = quizOptions[Math.floor(Math.random() * quizOptions.length)];
       }
-  
-      function selectCorrectAnswer(quizOptions, prevCorrectAnswer) {
-        // Select a correct answer from provided quiz options.
-        // To avoid repetition, the correct answer can't have the same index as
-        // the previous correct answer.
-        
-        // Start with the new answer = the previous answer, for the while loop.
-        let newAnswer = prevCorrectAnswer;
-        
-        // If the new answer is the same as the previous answer...
-        while (newAnswer === prevCorrectAnswer) {
-          // ... generate a new correct answer
-          newAnswer = quizOptions[Math.floor(Math.random() * quizOptions.length)];
-        }
-        
-        // Update prevCorrectAnswer for the next go around.
-        prevCorrectAnswer = newAnswer;
-        
-        return newAnswer; 
-      }
+      
+      // Update prevCorrectAnswer for the next go around.
+      prevCorrectAnswer = newAnswer;
+      
+      return newAnswer; 
+    }
  
     function renderQuizOption(index) {
       // Render the label & input for the quiz option with a given index
@@ -295,7 +285,7 @@ function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer) {
     </div>`;
   
   // Update DOM
-  $('main').html(feedbackDisplayInnerHTML);
+  $('main').html(feedbackDisplayHTML);
   
 }
 
@@ -339,11 +329,11 @@ function renderFinalResultsDisplay() {
   $('.js-header-user-score').html("");
   
   // Calculate & format percentage correct
-  let percentageCorrect = ((userProgressGlobal.correctAnswers
-                            / userProgressGlobal.questionNumber)
-                            * 100)
-                            .toFixed(1);
-                           
+  let percentageCorrect = calculatePercentageCorrect(
+                            userProgressGlobal.correctAnswers,
+                            userProgressGlobal.questionNumber,
+                            1);
+                            
     //TODO: This calculation has been run earlier -> split it into a function
   
   // Build the Final Results Display HTML
@@ -357,9 +347,18 @@ function renderFinalResultsDisplay() {
     </div>`;
   
   // Update the DOM
-  $('main').html(finalResultsDisplayInnerHTML);
+  $('main').html(finalResultsDisplayHTML);
   
 }
+
+  function calculatePercentageCorrect(correct, total, fixLength) {
+    // Calculate the percentage of correct answers, limiting the result to 
+    // fixLength decimal points.
+    
+      let percent = ((correct / total) * 100).toFixed(fixLength);
+      
+      return percent;
+  }
 
 function handleFinalResultsDisplay () {
   // If the user clicks the "Restart" button, reloads the page, thus starting

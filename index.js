@@ -25,7 +25,10 @@
 */
 
 
-/* === 1. STARTING DISPLAY === */
+/* =========================== *
+*  === 1. STARTING DISPLAY === *
+*  =========================== */
+
 
 function handleStartingDisplay() {
   // When user clicks the "Start" button, initialize the quiz setup and
@@ -45,7 +48,9 @@ function handleStartingDisplay() {
 
 }
 
-/* === 2. USER PROGRESS DISPLAY === */
+/* ================================ *
+*  === 2. USER PROGRESS DISPLAY === *
+*  ================================ */
 
 function renderHeaderQuestionNumber() {
   // Updates the "Question #" display in the page header
@@ -76,7 +81,9 @@ function renderHeaderUserScore () {
   
 }
 
-/* === 3. QUIZ DISPLAY === */
+/* ======================= *
+ * === 3. QUIZ DISPLAY === *
+ * ======================= */
 
 function renderQuizDisplay(prevCorrectAnswer) {
   // Advances the quiz game and displays a new quiz question
@@ -91,8 +98,7 @@ function renderQuizDisplay(prevCorrectAnswer) {
       <div class="md-whiteframe-15dp quiz-form-container">
         <form class="quiz-form">
         </form>
-      </div>
-    `;
+      </div>`;
     
     // Update DOM
     $('main').html(quizDisplayHTML);
@@ -131,8 +137,8 @@ function renderQuizDisplay(prevCorrectAnswer) {
       </fieldset>
       <input type="submit"
              class="md-whiteframe-4dp quiz-submit-button js-quiz-submit-button"
-             name="${correctAnswer}"></input>
-      `;
+             name="${correctAnswer}">
+      </input>`;
     
     // Update DOM
     $('.quiz-form').html(quizFormHTML);
@@ -204,15 +210,16 @@ function renderQuizDisplay(prevCorrectAnswer) {
                 <input type="radio" name="answer" 
                        id="${index}" value="${index}" required>
               </label>
-            </div>
-          `;
+            </div>`;
       
       //Update DOM
       $('div.fieldset-flex-container').append(quizOptionHTML);
 
     }
 
-/* === 4. QUIZ RESPONSE HANDLING === */
+/* ================================= *
+ * === 4. QUIZ RESPONSE HANDLING === *
+ * ================================= */
 
 function handleQuizAnswer() {
   // When user presses the "Submit" button, collect and evaluate the answer,
@@ -262,17 +269,15 @@ function handleQuizAnswer() {
     
   }
 
-
-
-
-//===========================================================================//
-
-//FEEDBACK DISPLAY (feedbackDisplay)
+/* =========================== *
+*  === 5. FEEDBACK DISPLAY === *
+*  =========================== */
 
 function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer) {
-  // This function displays quiz item feedback.
-  
-  // Update header user score
+  // Build the Quiz Item Feedback Display, including the user score in the
+  // page header.
+
+  // Update user score in page header
   renderHeaderUserScore();
   
   // Generate response text
@@ -280,58 +285,43 @@ function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer) {
     `Yes, ${quizDataGlobal[answerVal].companyName} is correct!` :
     `I'm sorry, ${quizDataGlobal[answerVal].companyName} is incorrect.`;
   
-  //Render Feedback Display
-  
-  let feedbackDisplayInnerHTML = `
+  // Build Feedback Display HTML
+  let feedbackDisplayHTML = `
     <div class="md-whiteframe-15dp question-feedback-display">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
-      <button role="button" class="md-whiteframe-4dp next-question-button js-next-question-button">Next</button>
-      <button role="button" class="md-whiteframe-4dp finish-quiz-button js-finish-quiz-button">Finish</button>
-    </div>
-  `;
+      <button role="button" class="md-whiteframe-4dp next-question-button js-next-question-button">Continue</button>
+      <button role="button" class="md-whiteframe-4dp finish-quiz-button js-finish-quiz-button">Exit</button>
+    </div>`;
   
+  // Update DOM
   $('main').html(feedbackDisplayInnerHTML);
   
-
-  if(TESTING) {
-    console.log(`"renderFeedbackDisplay" was called.`);
-  }
 }
 
 function handleFeedbackDisplay() {
+  // The user can either click the "Continue" button to load another question, or
+  // they can click the "Finish" button to end the quiz and see final results.
+    // NOTE: To match project requirements, the "Finish" button is not displayed
+    // until the user has responed to at least 5 questions.
   
-  // When the user clicks "Next question", render a new quiz question
+  // When the user clicks the "Continue" button...
   $('main').on('click', '.js-next-question-button', function(event){
     event.preventDefault();
     
-    // Render another question, and the cycle continues!
+    // ...Render another question, and the cycle continues!
     renderQuizDisplay();
-    
-    // Testing for "Next question" button handling
-    if (TESTING) {
-      console.log(`"Next Question" button was clicked`);
-    }
     
   });
   
+  // When the user clicks the "Finish" button...
   $('main').on('click', '.js-finish-quiz-button', function(event) {
     event.preventDefault();
     
+    // ...Render the Final Results Display
     renderFinalResultsDisplay();
     
-    // Testing for "Finish quiz" button handling
-    if (TESTING) {
-      console.log(`"Finish quiz" button was clicked`);
-    }
-    
   });
-  
-  // When the user clicks "Finish quiz", take them to the final results display
-  
-  if (TESTING) {
-    console.log(`"handleFeedbackDisplay" was called.`);
-  }
   
 }
     

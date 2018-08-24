@@ -140,7 +140,7 @@ body {
       background-color: var(--primary-dark);
       color: var(--on-primary-dark);
     }
-  
+    
   /* Starting display */
   
     .starting-display {
@@ -215,7 +215,7 @@ body {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
           }
-          
+
         .pseudo-fieldset input {
           display: none;
         }

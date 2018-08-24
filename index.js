@@ -150,8 +150,11 @@ function renderQuizOption(index) {
 
     let quizOptionInnerHTML = `
         <div class="quiz-option-container">
-        <input type="radio" name="answer" id="${index}" value="${index}">
-        <label class="quiz-option md-whiteframe-4dp" for="${index}">${quizDataGlobal[index].companyName.trim()}</label>
+        <label tabindex="0" class="quiz-option md-whiteframe-4dp" for="${index}">
+          <input type="radio" name="answer" id="${index}" value="${index}">
+          ${quizDataGlobal[index].companyName.trim()}
+        </label>
+
         </div>
     `
     

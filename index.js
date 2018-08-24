@@ -47,10 +47,36 @@ function handleStartingDisplay() {
 
 }
 
-
 /* === 2. USER PROGRESS DISPLAY === */
 
+function renderHeaderQuestionNumber() {
+  // Updates the "Question #" display in the page header
+  
+  //Compose string to display
+  let questionNumberString = `Question #${userProgressGlobal.questionNumber}`;
+  
+  // Update DOM
+  $j('.js-header-question-number').html(questionNumberString);
+  
+}
 
+function renderHeaderUserScore () {
+  // Updates the User score tracker in the page header
+  
+  // Calculate percentage, limit to 1 decimal place
+  let correctPercentage = ((userProgressGlobal.correctAnswers
+                           / userProgressGlobal.questionNumber)
+                           * 100).toFixed(1);
+
+  // Compose string to display
+  let userScoreString = `Correct: ${userProgressGlobal.correctAnswers}`
+                        + `/${userProgressGlobal.questionNumber}`
+                        + ` (${correctPercentage}%)`;
+  
+  // Update DOM
+  $('.js-header-user-score').html(userScoreString);
+  
+}
 
 
 
@@ -339,43 +365,6 @@ function handleFeedbackDisplay() {
   
 }
     
-//HEADER QUESTION NUMBER AND USER SCORE (userProgressElement)
-
-function renderHeaderQuestionNumber() {
-  
-  $('.js-header-question-number').html(`
-  Question #${userProgressGlobal.questionNumber}`);
-  
-  if(TESTING){
-    console.log(`"renderHeaderQuestionNumber" was called.
-      Question #: ${userProgressGlobal.questionNumber}
-    `);
-  }
-  
-}
-
-function renderHeaderUserScore () {
-  
-  let correctPercentage = ((userProgressGlobal.correctAnswers
-                           /userProgressGlobal.questionNumber)
-                           * 100).toFixed(1);
-
-  
-  let userScoreString = `Correct: ${userProgressGlobal.correctAnswers}`
-                        + `/${userProgressGlobal.questionNumber}`
-                        + ` (${correctPercentage}%)`;
-  
-  $('.js-header-user-score').html(userScoreString);
-  
-  
-  if(TESTING){
-    console.log(`"renderHeaderUserScore" was called.
-      User Score: ${userProgressGlobal.correctAnswers}
-    `);
-  }
-}
-
-
 
 //===========================================================================//
 

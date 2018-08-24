@@ -13,88 +13,36 @@
     <!-- ===STYLESHEETS=== -->
     <!-- CSS Reset -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+    <!-- Material Design Resources-->
+    <link rel="stylesheet" type="text/css" href="material-design.css">
     <!-- Primary stylesheet -->
     <link rel="stylesheet" type="text/css" href="styles.css">
     
   </head>
-  <body>
+  <body class="md-whiteframe-1dp">
     <header role="banner">
-      <div class="site-title">
+      <div class="site-title md-whiteframe-8dp">
         <h1>LA Tech Startup Quiz</h1>
-      </div>
-
-      <!-- ===USER PROGRESS ELEMENT=== -->
-      <div class="user-progress-element js-user-progress-element">
-        <ul>
-          <li class="js-header-question-number"></li>
-          <li class="js-header-user-score"></li>
-        </ul>
+        <!-- ===USER PROGRESS ELEMENT=== -->
+        <div class="user-progress-element js-user-progress-element">
+          <ul>
+            <li class="js-header-question-number"></li>
+            <li class="js-header-user-score"></li>
+          </ul>
+        </div>
       </div>
     </header>
     <main role="main">
       
       <!-- ===STARTING DISPLAY=== -->
 
-    <div class="starting-display">
-        <p>Welcome message</p>
-        <p>Quiz instructions</p>
-        <button role="button" class="start-quiz-button js-start-quiz-button">Start quiz</button>
-    </div>
-
-      <!-- ===QUIZ FORM=== -->
-<!--
-      <div class="quiz-form-container">
-        <form class="quiz-form" required>
-          <h2>Quiz question</h2>
-          <fieldset>
-            <label class="quiz-option">
-              <input type="radio" name="answer" value="id1">
-                Company 1
-              </input>
-            </label>
-            <label class="quiz-option">
-              <input type="radio" name="answer" value="id2">
-                Company 2
-              </input>
-            </label>
-            <label class="quiz-option">
-              <input type="radio" name="answer" value="id3">
-                Company 3
-              </input>
-            </label>
-            <label class="quiz-option">
-              <input type="radio" name="answer" value="id4">
-                Company 4
-              </input>
-            </label>
-          </fieldset>
-          <input type="submit" class="quiz-submit-button"></input>
-        </form>
+      <div class="starting-display md-whiteframe-16dp">
+          <p>Welcome message</p>
+          <p>Quiz instructions</p>
+          <button role="button" class="start-quiz-button js-start-quiz-button">Start quiz</button>
       </div>
--->
-      
-      <!-- ===QUESTION FEEDBACK DISPLAY=== -->
-<!--
-      <div class="question-feedback-display">
-        <h2>Correct/Incorrect display</h2>
-        <p>Correct answer text</p>
-        <button role="button" class="next-question-button">Next question</button>
-        <button role="button" class="finish-button">Finish quiz</button>
-      </div>
--->
-      
-      <!-- ===FINAL RESULTS DISPLAY=== -->
-<!--
-      <div class="final-results-display">
-        <h2>Final results</h2>
-        <p>Total questions: 7</p>
-        <p>Correct answers: 4</p>
-        <p>Performance: 57%</p>
-        <button role="button" class="start-button">Start new quiz</button>
-      </div>
--->
     </main>
-    <footer>
+    <footer class="md-whiteframe-8dp">
       &copy; 2018 Simon Lutterbie
       <!-- This section will also display an 'Email me icon' that links
            to my email address, and a 'Github icon' that links to my

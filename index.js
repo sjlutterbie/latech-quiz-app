@@ -43,7 +43,7 @@ function renderQuizDisplay(prevCorrectAnswer) {
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
-    <div class="quiz-form-container">
+    <div class="quiz-form-container md-whiteframe-16dp">
       <form class="quiz-form">
       </form>
     </div>
@@ -58,9 +58,6 @@ function renderQuizDisplay(prevCorrectAnswer) {
     console.log(`"renderQuizDisplay" was called.
       userProgressGlobal.questionNumber: ${userProgressGlobal.questionNumber}
     `);
-    $('.quiz-form-container').append(
-      `<button role="button" class="js-start-quiz-button">TESTING:<br/>Generate new question</button>`
-      );
   }
   
 }
@@ -250,7 +247,7 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   //Render Feedback Display
   
   let feedbackDisplayInnerHTML = `
-    <div class="question-feedback-display">
+    <div class="question-feedback-display md-whiteframe-16dp">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
       <button role="button" class="next-question-button js-next-question-button">Next question</button>
@@ -263,9 +260,6 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
 
   if(TESTING) {
     console.log(`"renderFeedbackDisplay" was called.`);
-    $('.question-feedback-display').append(
-      `<button role="button" class="js-start-quiz-button">TESTING:<br/>Generate new question</button>`
-      );
   }
 }
 
@@ -362,7 +356,7 @@ function renderFinalResultsDisplay() {
                            .toFixed(1);
   
   let finalResultsDisplayInnerHTML = `
-    <div class="final-results-display">
+    <div class="final-results-display md-whiteframe-16dp">
       <h2>Final results</h2>
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>

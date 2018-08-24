@@ -1,5 +1,49 @@
+/* CSS VARIABLES */
+
+:root {
+  
+  /* Primary color */
+  
+  --primary-color: #005a9c; /* LA Dodgers Blue */
+    --on-primary-color: #fff;
+    
+  --primary-light: #4f86cd;
+    --on-primary-light: #000;
+    
+  --primary-dark: #00326d;
+    --on-primary-dark: #fff;
+  
+  /* Secondary color */
+  
+  --secondary-color: #a5acaf; /* LA Dodgers Silver */
+    --on-secondary-color: #000;
+    
+  --secondary-light: #d6dee1;
+    --on-secondary-light: #000;
+    
+  --secondary-dark: #767d80;
+    --on-secondary-dark: #000;
+  
+  /* Alert */
+  --alert-color: #ef3e42; /* LA Dodgers Red */
+    --on-alert-color: #000;
+    
+  --alert-light: #ff746d;
+    --on-alert-light: #000;
+    
+  --alert-dark: #b5001a;
+    --on-alert-dark: #000;
+
+}
+
+
+
 * {
   box-sizing: border-box;
+}
+
+html{
+  background-color: var(--secondary-light);
 }
 
 html, body {
@@ -11,6 +55,7 @@ body {
   flex-flow: column nowrap;
   max-width: 1000px;
   margin: auto;
+  background-color: #fff;
 }
 
 /* === SMALL SCREEN LAYOUT === */
@@ -26,7 +71,8 @@ body {
   
     .site-title {
       order: 1;
-      background: #eee;
+      background-color: var(--primary-dark);
+      color: var(--on-primary-dark);
       width: 100%;
     }
       
@@ -40,7 +86,13 @@ body {
     .user-progress-element {
       order: 2;
       width: 100%;
-      background: #ccc;
+      background: var(--primary-color);
+      color: var(--on-primary-color);
+      
+      /* Material Design Responsive Manual Override */
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
     }
     
       .user-progress-element ul {
@@ -71,7 +123,8 @@ body {
     .starting-display {
       width: 90%;
       max-width: 500px;
-      background-color: #aaa;
+      background-color: #fff;
+      color: #000;
       padding: 10px;
       text-align: center;
     }
@@ -80,7 +133,8 @@ body {
   
     .quiz-form-container {
       width: 90%;
-      background-color: #aaa;
+      background-color: #fff;
+      color: #000;
       padding: 10px;
     }
     
@@ -112,7 +166,8 @@ body {
     .question-feedback-display {
       width: 90%;
       max-width: 500px;
-      background-color: #aaa;
+      background-color: #fff;
+      color: #000;
       padding: 10px;
       text-align: center;
     }
@@ -122,7 +177,8 @@ body {
     .final-results-display {
       width: 90%;
       max-width: 500px;
-      background-color: #aaa;
+      background-color: #fff;
+      color: #000;
       padding: 10px;
       text-align: center;
     }
@@ -134,7 +190,8 @@ footer {
   flex-shrink: 0;
   padding: 5px;
   text-align: center;
-  background: #ccc;
+  background: var(--primary-dark);
+  color: var(--on-primary-dark);
 }
 
 /* ===LARGE SCREEN ADJUSTMENTS=== */
@@ -145,13 +202,17 @@ footer {
     flex-wrap: nowrap;
     justify-content: flex-start;
   }
-
+  
     h1 {
       text-align: left;
     }
     
     .user-progress-element {
-      background: #eee; /* Match .site-title for material design continuity */
+      /* Match site-title on larger displays  */
+      background: inherit;
+      color: inherit;
+      box-shadow: none;
+    
     }
     
       .user-progress-element ul {

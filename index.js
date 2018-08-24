@@ -230,11 +230,10 @@ function renderQuizDisplay(questionList) {
       // Build the HTML
       let quizOptionHTML = `
             <div class="quiz-option-container">
-              <label class="md-whiteframe-4dp quiz-option js-quiz-option"
-                     for="${index}">${quizDataGlobal[index].companyName}
-                <input type="radio" name="answer" 
+              <input type="radio" name="answer" 
                        id="${index}" value="${index}" required>
-              </label>
+              <label class="md-whiteframe-4dp quiz-option js-quiz-option"
+                     for="${index}">${quizDataGlobal[index].companyName}</label>
             </div>`;
       
       //Update DOM

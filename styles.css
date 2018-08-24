@@ -183,6 +183,7 @@ body {
       
         fieldset {
           width: 100%;
+          border: none;
         }
       
         .fieldset-flex-container {
@@ -207,14 +208,6 @@ body {
         }
         
           .fieldset-flex-container label:hover {
-            background-color: var(--secondary-color);
-            color: var(--on-secondary-color);
-            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-              0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-          }
-          
-          .fieldset-flex-container label:checked {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),

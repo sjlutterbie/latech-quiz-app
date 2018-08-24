@@ -43,7 +43,7 @@ function renderQuizDisplay(prevCorrectAnswer) {
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
-    <div class="quiz-form-container md-whiteframe-16dp">
+    <div class="quiz-form-container md-whiteframe-7dp">
       <form class="quiz-form">
       </form>
     </div>
@@ -149,7 +149,7 @@ function renderQuizOption(index) {
   // This function renders the label->input HTML code for a single quizOption
 
     let quizOptionInnerHTML = `
-      <label class="quiz-option" for="${index}">
+      <label class="quiz-option md-whiteframe-4dp" for="${index}">
         <input type="radio" name="answer" id="${index}" value="${index}">
           ${quizDataGlobal[index].companyName}
         </input>
@@ -247,7 +247,7 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   //Render Feedback Display
   
   let feedbackDisplayInnerHTML = `
-    <div class="question-feedback-display md-whiteframe-16dp">
+    <div class="question-feedback-display md-whiteframe-7dp">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
       <button role="button" class="next-question-button js-next-question-button">Next question</button>
@@ -356,7 +356,7 @@ function renderFinalResultsDisplay() {
                            .toFixed(1);
   
   let finalResultsDisplayInnerHTML = `
-    <div class="final-results-display md-whiteframe-16dp">
+    <div class="final-results-display md-whiteframe-7dp">
       <h2>Final results</h2>
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>

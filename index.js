@@ -9,11 +9,9 @@
 *    - Update Question Number
 *    - Update User Score
 * 3. Quiz Display
-*    - Build quizDisplay
-*    - Event handlers
+*    - Build quizDisplay & support functions
 * 4. Quiz Response Handling
-*    - Event handler
-*    - Support functions
+*    - Event handler & support functions
 * 5. Feedback Display
 *    - Build feedbackDisplay
 *    - Event handlers
@@ -79,8 +77,6 @@ function renderHeaderUserScore () {
 }
 
 /* === 3. QUIZ DISPLAY === */
-
-  /* === Rendering the Quiz Display === */
 
 function renderQuizDisplay(prevCorrectAnswer) {
   // Advances the quiz game and displays a new quiz question
@@ -216,36 +212,27 @@ function renderQuizDisplay(prevCorrectAnswer) {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-//===========================================================================//
-
-// QUIZ FORM SUBMISSION
+/* === 4. QUIZ RESPONSE HANDLING === */
 
 function handleQuizAnswer() {
+  // When user presses the "Submit" button, collect and evaluate the answer,
+  // and trigger the appropriate feedback display.
   
   $('main').on('click', '.js-quiz-submit-button', function(event) {
     event.preventDefault();
     
-    // Get form value
+    // Get submitted quiz answer from the form
     let answerVal = $('input[name="answer"]:checked').val();
     
-    // Get correct answer from submit button
+    // Get correct answer stored in the submit button
     let correctAnswer = $('.quiz-submit-button').attr('name');
     
-    // If no response...
+    // If no response, trigger an alert and exit the function
     if (!answerVal) {
       alert('Please select an answer.');
+      
+      // TODO: Convert this to an in-page warning
+      
       return;
     }
 
@@ -254,43 +241,29 @@ function handleQuizAnswer() {
       
     // render Feedback display
     renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer);
-    
-    //Quiz answer submission testing
-    if(TESTING) {
-      console.log(`Quiz answer submitted!
-        answerVal: ${answerVal} - ${quizDataGlobal[answerVal].companyName}
-        correctAnswer: ${correctAnswer} - ${quizDataGlobal[correctAnswer].companyName}
-        boolCorrect: ${boolCorrect}
-      `);
-    }
-    
+  
   });
   
-  //handleQuizAnswer testing
-  if(TESTING){
-    console.log(`"handleQuizAnswer" was called.`);
-  }
 }
 
-function processQuizAnswer(answerVal, correctAnswer) {
-  
-  //Check for correct answer
-  let boolCorrect = (answerVal === correctAnswer);
-  
-  //If correct, update userProgressGlobal
-  if (boolCorrect) {
-    userProgressGlobal.correctAnswers += 1;
+  function processQuizAnswer(answerVal, correctAnswer) {
+    // Check if the answer is correct. If it is, advance the global variable
+    // userProgressGlobal.correctAnswers
+    
+    //Check for correct answer
+    let boolCorrect = (answerVal === correctAnswer);
+    
+    //If correct, update userProgressGlobal
+    if (boolCorrect) {
+      userProgressGlobal.correctAnswers += 1;
+    }
+    
+    return boolCorrect;
+    
   }
-  
-  return boolCorrect;
-  
-  console.log(`"processQuizAnswer" was called.
-    answerVal: ${answerVal}
-    correctAnswer: ${correctAnswer}
-    boolCorrect: ${boolCorrect}
-  `)
-  
-}
+
+
+
 
 //===========================================================================//
 

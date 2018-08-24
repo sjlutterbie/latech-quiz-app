@@ -6,43 +6,44 @@ Lists and tracks the project requirements and user stories for this app.
 
 ## User experience requirements
 
-- [ ] **The starting screen should have a button that users can click to start the quiz.**
-  - [ ] When the user loads the `quiz URL`, it loads the ~~`quiz interface`~~ `page body` and `starting display`.
-  - [ ] The `starting display` has a `Start button`.
-    - [ ] When the `Start button` is pressed:
-      - [ ] The `starting display` disappears.
-      - [ ] The first `quiz form` appears.
-- [ ] **Users should be prompted through a series of at least 5 multiple choice questions they can answer.**
-  - [ ] **Users should be asked 1 question after the other.**
-  - [ ] **Users should only be prompted with 1 question at a time.**
-- [ ] **Users should not be able to skip questions**
-  - [ ] The `quiz form` requires a response before a `Next question button` is displayed. 
-- [ ] **Users should be able to see which questions they're on.**
-  - [ ] The `user progress element` displays:
-    - [ ] The question number the user is on.
-    - [ ] The number of questions they have answered correctly.
-    - [ ] The percentage of questions they have answered correctly.
-- [ ] **Upon submitting an answer, users should:**
-  - [ ] **Receive textual feedback about their answer.**
-    - [ ] Upon submitting an answer via the `quiz form`:
-      - [ ] The `quiz form` disappears.
-      - [ ] A `question feedback display` appears.
-    - [ ] **If they were incorrect, they should be told the correct answer.**
-      - [ ] The `question feedback display` explains the correct answer.
-  - [ ] **Be moved to the next question (or interact with an element to move on)**
-    - [ ] The `question feedback display` includes a `Next question button`.
-- [ ] **Users should be shown their overall score at the end of the quiz.**
-  - [ ] A `Final results display` appears at the end of the quiz, which displays:
-    - [ ] The number of questions asked.
-    - [ ] The number of questions answered correctly.
-    - [ ] The percentage of questions answered correctly.
-- [ ] **Users should be able to start a new quiz.**
-  - [ ] On the `Final results display` there is a `Start new quiz button`
-    - [ ] The `Start new quiz` button re-loads the `quiz URL`.
+- [X] **The starting screen should have a button that users can click to start the quiz.**
+  - [X] When the user loads the `quiz URL`, it loads the ~~`quiz interface`~~ `page body` and `starting display`.
+  - [X] The `starting display` has a `Start button`.
+    - [X] When the `Start button` is pressed:
+      - [X] The `starting display` disappears.
+      - [X] The first `quiz form` appears.
+- [X] **Users should be prompted through a series of at least 5 multiple choice questions they can answer.**
+  - *NOTE: Technically, the user **can** stop before completing 5 questions...*
+  - [X] **Users should be asked 1 question after the other.**
+  - [X] **Users should only be prompted with 1 question at a time.**
+- [X] **Users should not be able to skip questions**
+  - [X] The `quiz form` requires a response before a `Next question button` is displayed. 
+- [X] **Users should be able to see which questions they're on.**
+  - [X] The `user progress element` displays:
+    - [X] The question number the user is on.
+    - [X] The number of questions they have answered correctly.
+    - [X] The percentage of questions they have answered correctly.
+- [X] **Upon submitting an answer, users should:**
+  - [X] **Receive textual feedback about their answer.**
+    - [X] Upon submitting an answer via the `quiz form`:
+      - [X] The `quiz form` disappears.
+      - [X] A `question feedback display` appears.
+    - [X] **If they were incorrect, they should be told the correct answer.**
+      - [X] The `question feedback display` explains the correct answer.
+  - [X] **Be moved to the next question (or interact with an element to move on)**
+    - [X] The `question feedback display` includes a `Next question button`.
+- [X] **Users should be shown their overall score at the end of the quiz.**
+  - [X] A `Final results display` appears at the end of the quiz, which displays:
+    - [X] The number of questions asked.
+    - [X] The number of questions answered correctly.
+    - [X] The percentage of questions answered correctly.
+- [X] **Users should be able to start a new quiz.**
+  - [X] On the `Final results display` there is a `Start new quiz button`
+    - [X] The `Start new quiz` button re-loads the `quiz URL`.
 
 ## Technical requirements
 
-- [ ] **Render answer choices in a `<form>`.**
+- [X] **Render answer choices in a `<form>`.**
 - [ ] **Use semantic HTML, along with CSS and jQuery.**
 - [ ] **Follow `ally` best practices.**
 - [ ] **Use responsive design.**
@@ -87,8 +88,8 @@ Lists and tracks the project requirements and user stories for this app.
 
 ## Process requirements
 
-- [ ] **Gather content for app.**
+- [ ]**Gather content for app.**
   - [ ] **Type up questions and answers.**
   - [ ] **Gather any images or icons required.**
-- [ ] **Think about user experiences outlined above, and how your design must make them possible.**
-- [ ] **Design app using HTML wireframes.**
+- [X] **Think about user experiences outlined above, and how your design must make them possible.**
+- [X] **Design app using HTML wireframes.**

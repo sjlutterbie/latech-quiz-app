@@ -1,0 +1,19 @@
+Elevation Layers:
+
+0   1   4   8   12  16  20  24    
+
+html
+    body (+1)
+            site-title (+7)
+        user-progress-element (+3) (MANUAL OVERRIDE)
+                starting-display (+15)
+                    start-quiz-button (+4)
+                quiz-form-container (+15)
+                    quiz-option (+4)
+                    quiz-submit-button (+4)
+                question-feedback-display (+15)
+                    next-question-button (+4)
+                    finish-quiz-button (+4)
+                final-results-display (+15)
+                    start-new-quiz-button (+4)
+            footer

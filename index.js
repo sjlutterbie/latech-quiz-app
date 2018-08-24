@@ -43,7 +43,7 @@ function renderQuizDisplay(prevCorrectAnswer) {
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
-    <div class="quiz-form-container">
+    <div class="quiz-form-container md-whiteframe-15dp">
       <form class="quiz-form">
       </form>
     </div>
@@ -58,9 +58,6 @@ function renderQuizDisplay(prevCorrectAnswer) {
     console.log(`"renderQuizDisplay" was called.
       userProgressGlobal.questionNumber: ${userProgressGlobal.questionNumber}
     `);
-    $('.quiz-form-container').append(
-      `<button role="button" class="js-start-quiz-button">TESTING:<br/>Generate new question</button>`
-      );
   }
   
 }
@@ -78,8 +75,8 @@ function renderQuizForm(prevCorrectAnswer) {
   //  (correctAnswer is passed out of the function as the submit button's name)
   let quizFormInnerHTML = `
     <h2>${quizDataGlobal[correctAnswer].companyQuestion}</h2>
-    <fieldset></fieldset>
-    <input type="submit" class="quiz-submit-button" name="${correctAnswer}"></input>
+    <div class="pseudo-fieldset"></div>
+    <input type="submit" class="quiz-submit-button js-quiz-submit-button md-whiteframe-4dp" name="${correctAnswer}"></input>
     `;
   
   $('.quiz-form').html(quizFormInnerHTML);
@@ -152,14 +149,13 @@ function renderQuizOption(index) {
   // This function renders the label->input HTML code for a single quizOption
 
     let quizOptionInnerHTML = `
-      <label class="quiz-option" for="${index}">
+        <div class="quiz-option-container">
         <input type="radio" name="answer" id="${index}" value="${index}">
-          ${quizDataGlobal[index].companyName}
-        </input>
-      </label>
+        <label class="quiz-option md-whiteframe-4dp" for="${index}">${quizDataGlobal[index].companyName.trim()}</label>
+        </div>
     `
     
-    $('fieldset').append(quizOptionInnerHTML);
+    $('div.pseudo-fieldset').append(quizOptionInnerHTML);
   
   if(TESTING) {
     console.log(`"renderQuizOption" was called.
@@ -174,7 +170,7 @@ function renderQuizOption(index) {
 
 function handleQuizAnswer() {
   
-  $('main').on('click', '.quiz-submit-button', function(event) {
+  $('main').on('click', '.js-quiz-submit-button', function(event) {
     event.preventDefault();
     
     // Get form value
@@ -193,7 +189,7 @@ function handleQuizAnswer() {
     let boolCorrect = processQuizAnswer(answerVal, correctAnswer);
       
     // render Feedback display
-    renderFeedbackDisplay(boolCorrect, correctAnswer);
+    renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer);
     
     //Quiz answer submission testing
     if(TESTING) {
@@ -236,7 +232,7 @@ function processQuizAnswer(answerVal, correctAnswer) {
 
 //FEEDBACK DISPLAY (feedbackDisplay)
 
-function renderFeedbackDisplay(boolCorrect, correctAnswer) {
+function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer) {
   // This function displays quiz item feedback.
   
   // Update header user score
@@ -244,17 +240,17 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   
   // Generate response text
   let feedbackText = boolCorrect ?
-    `Yes, ${quizDataGlobal[correctAnswer].companyName} is correct!` :
-    `I'm sorry, ${quizDataGlobal[correctAnswer].companyName} is incorrect.`;
+    `Yes, ${quizDataGlobal[answerVal].companyName} is correct!` :
+    `I'm sorry, ${quizDataGlobal[answerVal].companyName} is incorrect.`;
   
   //Render Feedback Display
   
   let feedbackDisplayInnerHTML = `
-    <div class="question-feedback-display">
+    <div class="question-feedback-display md-whiteframe-15dp">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
-      <button role="button" class="next-question-button js-next-question-button">Next question</button>
-      <button role="button" class="finish-quiz-button js-finish-quiz-button">Finish quiz</button>
+      <button role="button" class="next-question-button js-next-question-button md-whiteframe-4dp">Next</button>
+      <button role="button" class="finish-quiz-button js-finish-quiz-button md-whiteframe-4dp">Finish</button>
     </div>
   `;
   
@@ -263,9 +259,6 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
 
   if(TESTING) {
     console.log(`"renderFeedbackDisplay" was called.`);
-    $('.question-feedback-display').append(
-      `<button role="button" class="js-start-quiz-button">TESTING:<br/>Generate new question</button>`
-      );
   }
 }
 
@@ -362,12 +355,12 @@ function renderFinalResultsDisplay() {
                            .toFixed(1);
   
   let finalResultsDisplayInnerHTML = `
-    <div class="final-results-display">
+    <div class="final-results-display md-whiteframe-15dp">
       <h2>Final results</h2>
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>
       <p>Performance: ${percentageCorrect}%</p>
-      <button role="button" class="start-new-quiz-button js-start-new-quiz-button">Start new quiz</button>
+      <button role="button" class="start-new-quiz-button js-start-new-quiz-button md-whiteframe-4dp">Restart</button>
     </div>
   `;
   

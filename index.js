@@ -325,82 +325,69 @@ function handleFeedbackDisplay() {
   
 }
     
-
-//===========================================================================//
-
-//FINAL RESULTS DISPLAY
+/* ================================ *
+ * === 6. FINAL RESULTS DISPLAY === *
+ * ================================ */
 
 function renderFinalResultsDisplay() {
-  
-  // Hide the question number and user score from the top Nav
-  
+  // When the user clicks the "Finish" button, display their overall score, and
+  // give them the option of starting a new quiz
+
+  // Hide the question number and user score from the header,
+  // to avoid repetition.
   $('.js-header-question-number').html("");
   $('.js-header-user-score').html("");
   
   // Calculate & format percentage correct
-  
   let percentageCorrect = ((userProgressGlobal.correctAnswers
                             / userProgressGlobal.questionNumber)
-                           * 100)
-                           .toFixed(1);
+                            * 100)
+                            .toFixed(1);
+                           
+    //TODO: This calculation has been run earlier -> split it into a function
   
-  let finalResultsDisplayInnerHTML = `
+  // Build the Final Results Display HTML
+  let finalResultsDisplayHTML = `
     <div class="md-whiteframe-15dp final-results-display">
       <h2>Final results</h2>
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>
       <p>Performance: ${percentageCorrect}%</p>
       <button role="button" class="md-whiteframe-4dp start-new-quiz-button js-start-new-quiz-button">Restart</button>
-    </div>
-  `;
+    </div>`;
   
+  // Update the DOM
   $('main').html(finalResultsDisplayInnerHTML);
   
-  
-  //NOTE: The "Start new quiz" button listener is the same action as the initial
-  // "Start quiz" button, and thus is handled by handleStartingDisplay.
-
-  if(TESTING) {
-    console.log(`"renderFinalResultsDisplay" was called.
-      Total Questions: ${userProgressGlobal.questionNumber}
-      Total Correct: ${userProgressGlobal.correctAnswers}
-      Performance: ${percentageCorrect}%
-    `);
-  }
 }
 
 function handleFinalResultsDisplay () {
+  // If the user clicks the "Restart" button, reloads the page, thus starting
+  // a fresh quiz.
   
+  // When the user presses the "Restart" button...
   $('main').on('click', '.js-start-new-quiz-button', function(event) {
     
-    //Reload the page, taking the user back to the Start Display
+    // ...Reload the page, taking the user back to the Start Display
     location.reload();
     
   });
   
-  
-  if (TESTING) {
-    console.log(`"handleFinalResultsDisplay" was called"`);
-  }
 }
 
-
-// DOCUMENT LOAD (handleQUizApp function)
-  // When the user loads the document, the "startingDisplay" appears automatically.
+/* =========================================== *
+ * === 7. INIT AND DOCUMENT LOAD FUNCTIONS === *
+ * =========================================== */
 
 function handleQuizApp() {
-  // Subsidiary handler functions get called here
-  
+  // Load event handler functions
+
   handleStartingDisplay();
   handleQuizAnswer();
   handleFeedbackDisplay();
   handleFinalResultsDisplay();
 
-  if(TESTING) {
-    console.log(`"handleQuizApp" was called`);
-  }
-  
 }
 
-//jQuery launch code...  
+// And finally... the jQuery launch code!  
 $(handleQuizApp);

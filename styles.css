@@ -214,6 +214,14 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12);
           }
           
+          .fieldset-flex-container label:checked {
+            background-color: var(--secondary-color);
+            color: var(--on-secondary-color);
+            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+          }
+          
           .fieldset-flex-container input[type="radio"]:active+label {
             background-color: var(--secondary-dark);
             color: var(--on-secondary-dark);
@@ -262,9 +270,6 @@ body {
       align-items: center;
     }
     
-        .answer-required-alert i {
-        }
-      
       .answer-required-alert:hover {
         background-color: var(--alert-dark);
         color: var(--on-alert-dark);

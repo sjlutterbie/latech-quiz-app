@@ -173,16 +173,24 @@ body {
       }
       
       .quiz-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         width: 90%;
         margin: auto;
         text-align: center;
       }
+      
+        fieldset {
+          width: 100%;
+        }
       
         .fieldset-flex-container {
           text-align: center;
           margin: 0px;
           border: none;
           padding: 0px;
+          flex-grow: 1;
         }
         
         
@@ -239,6 +247,29 @@ body {
       text-align: center;
       border-radius: 4px;
     }
+    
+    .answer-required-alert {
+      background-color: var(--alert-color);
+      color: var(--on-alert-color);
+      border-radius: 4px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      padding:10px;
+      z-index: 20;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+    
+        .answer-required-alert i {
+        }
+      
+      .answer-required-alert:hover {
+        background-color: var(--alert-dark);
+        color: var(--on-alert-dark);
+      }
+    
     
   /* Final results disply */
   

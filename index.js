@@ -43,7 +43,7 @@ function renderQuizDisplay(prevCorrectAnswer) {
   
   // Render the quizDisplay
   let quizDisplayInnerHTML = `
-    <div class="quiz-form-container md-whiteframe-7dp">
+    <div class="quiz-form-container md-whiteframe-15dp">
       <form class="quiz-form">
       </form>
     </div>
@@ -76,7 +76,7 @@ function renderQuizForm(prevCorrectAnswer) {
   let quizFormInnerHTML = `
     <h2>${quizDataGlobal[correctAnswer].companyQuestion}</h2>
     <fieldset></fieldset>
-    <input type="submit" class="quiz-submit-button" name="${correctAnswer}"></input>
+    <input type="submit" class="quiz-submit-button js-quiz-submit-button md-whiteframe-4dp" name="${correctAnswer}"></input>
     `;
   
   $('.quiz-form').html(quizFormInnerHTML);
@@ -171,7 +171,7 @@ function renderQuizOption(index) {
 
 function handleQuizAnswer() {
   
-  $('main').on('click', '.quiz-submit-button', function(event) {
+  $('main').on('click', '.js-quiz-submit-button', function(event) {
     event.preventDefault();
     
     // Get form value
@@ -247,11 +247,11 @@ function renderFeedbackDisplay(boolCorrect, correctAnswer) {
   //Render Feedback Display
   
   let feedbackDisplayInnerHTML = `
-    <div class="question-feedback-display md-whiteframe-7dp">
+    <div class="question-feedback-display md-whiteframe-15dp">
       <h2>${feedbackText}</h2>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
-      <button role="button" class="next-question-button js-next-question-button">Next question</button>
-      <button role="button" class="finish-quiz-button js-finish-quiz-button">Finish quiz</button>
+      <button role="button" class="next-question-button js-next-question-button md-whiteframe-4dp">Next question</button>
+      <button role="button" class="finish-quiz-button js-finish-quiz-button md-whiteframe-4dp">Finish quiz</button>
     </div>
   `;
   
@@ -356,12 +356,12 @@ function renderFinalResultsDisplay() {
                            .toFixed(1);
   
   let finalResultsDisplayInnerHTML = `
-    <div class="final-results-display md-whiteframe-7dp">
+    <div class="final-results-display md-whiteframe-15dp">
       <h2>Final results</h2>
       <p>Total questions: ${userProgressGlobal.questionNumber}</p>
       <p>Correct answers: ${userProgressGlobal.correctAnswers}</p>
       <p>Performance: ${percentageCorrect}%</p>
-      <button role="button" class="start-new-quiz-button js-start-new-quiz-button">Start new quiz</button>
+      <button role="button" class="start-new-quiz-button js-start-new-quiz-button md-whiteframe-4dp">Start new quiz</button>
     </div>
   `;
   

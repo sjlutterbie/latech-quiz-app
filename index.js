@@ -75,7 +75,7 @@ function renderQuizForm(prevCorrectAnswer) {
   //  (correctAnswer is passed out of the function as the submit button's name)
   let quizFormInnerHTML = `
     <h2>${quizDataGlobal[correctAnswer].companyQuestion}</h2>
-    <fieldset></fieldset>
+    <div class="pseudo-fieldset"></div>
     <input type="submit" class="quiz-submit-button js-quiz-submit-button md-whiteframe-4dp" name="${correctAnswer}"></input>
     `;
   
@@ -155,7 +155,7 @@ function renderQuizOption(index) {
         </div>
     `
     
-    $('fieldset').append(quizOptionInnerHTML);
+    $('div.pseudo-fieldset').append(quizOptionInnerHTML);
   
   if(TESTING) {
     console.log(`"renderQuizOption" was called.

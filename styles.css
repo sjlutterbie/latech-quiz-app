@@ -175,16 +175,15 @@ body {
         text-align: center;
       }
       
-        fieldset {
+        .pseudo-fieldset {
           text-align: center;
           margin: 0px;
           border: none;
           padding: 0px;
-          margin-bottom: 10px;
         }
         
         
-        fieldset label {
+        .pseudo-fieldset label {
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -196,7 +195,7 @@ body {
           border-radius: 4px;
         }
         
-          fieldset label:hover {
+          .pseudo-fieldset label:hover {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -204,7 +203,7 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12);
           }
           
-          fieldset input[type="radio"]:active+label {
+          .pseudo-fieldset input[type="radio"]:active+label {
             background-color: var(--secondary-dark);
             color: var(--on-secondary-dark);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -212,12 +211,12 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
           }
           
-          fieldset input[type="radio"]:checked+label {
+          .pseudo-fieldset input[type="radio"]:checked+label {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
           }
           
-        fieldset input {
+        .pseudo-fieldset input {
           display: none;
         }
       
@@ -290,21 +289,29 @@ footer {
       }
       
       div.quiz-option-container{
-        border: 1px solid red;
         width: 49%;
         margin: 0px;
         padding: 0px;
       }
+      
+    .pseudo-fieldset {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+    
+      .quiz-option-container {
+        width: 40%;
+        flex-grow: 0;
+      }
         
-        fieldset label {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-content: center;
-          background-color: var(--secondary-light);
-          color: var(--on-secondary-light);
-          margin-bottom: 10px;
-          border-radius: 4px;
-        }
 
+}
+
+@media only screen and (max-height: 330px ) {
+  div.quiz-option-container {
+    width: 20%;
+    font-size: 12px;
+  }
 }

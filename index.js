@@ -126,6 +126,7 @@ function renderHeaderUserScore () {
 function renderQuizDisplay(questionList) {
   // Advances the quiz game and displays a new quiz question
   
+  
   // Update the question number and user progress display
   updateQuestionNumber();
   
@@ -184,6 +185,10 @@ function renderQuizDisplay(questionList) {
         </legend>
         <div class="fieldset-flex-container"></div>
       </fieldset>
+      <div role="button" class="md-whiteframe-8dp answer-required-alert
+        js-answer-required-alert">You must select an answer.
+        <i class="material-icons">error</i>
+      </div>
       <input type="submit"
              class="md-whiteframe-4dp quiz-submit-button js-quiz-submit-button"
              name="${correctAnswer}">
@@ -191,6 +196,10 @@ function renderQuizDisplay(questionList) {
     
     // Update DOM
     $('.quiz-form').html(quizFormHTML);
+    
+    // Hide the "response required alert" to start
+    $('.js-answer-required-alert').toggle(false);
+
     
     // Generate the Quiz Option HTML, which render within the Quiz Form
     quizOptions.forEach(index => renderQuizOption(index));
@@ -221,7 +230,7 @@ function renderQuizDisplay(questionList) {
       // Build the HTML
       let quizOptionHTML = `
             <div class="quiz-option-container">
-              <label class="md-whiteframe-4dp quiz-option"
+              <label class="md-whiteframe-4dp quiz-option js-quiz-option"
                      for="${index}">${quizDataGlobal[index].companyName}
                 <input type="radio" name="answer" 
                        id="${index}" value="${index}" required>
@@ -252,8 +261,9 @@ function handleQuizAnswer() {
     
     // If no response, trigger an alert and exit the function
     if (!answerVal) {
-      alert('Please select an answer.');
       
+      $('.js-answer-required-alert').toggle(true);
+
       // TODO: Convert this to an in-page warning
       
       return;
@@ -266,6 +276,16 @@ function handleQuizAnswer() {
     renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer, questionList);
   
   });
+  
+  // Provide two methods for removing the "answer required" alert:
+    // Option 1: Select an answer
+    $('main').on('click', '.js-quiz-option', function(event) {
+      $('.js-answer-required-alert').toggle(false);
+    });
+    // Option 2: Click the alert itself
+    $('main').on('click', '.js-answer-required-alert', function(event) {
+      $('.js-answer-required-alert').toggle(false);
+    });
   
 }
 

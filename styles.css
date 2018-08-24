@@ -167,6 +167,7 @@ body {
       .quiz-form {
         width: 90%;
         margin: auto;
+        text-align: center;
       }
       
         fieldset {
@@ -177,20 +178,39 @@ body {
         }
         
         fieldset label {
-          display: inline-block;
+          display: flex;
+          flex-direction: column;
+          align-content: center;
           width: 100%;
-          background-color: var(--primary-light);
+          background-color: var(--secondary-light);
+          color: var(--on-secondary-light);
           margin-bottom: 10px;
         }
         
           fieldset label:hover {
-            background-color: var(--primary-color);
-            color: var(--on-primary-color);
+            background-color: var(--secondary-color);
+            color: var(--on-secondary-color);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
               0px 6px 10px 0px rgba(0, 0, 0, 0.14),
               0px 1px 18px 0px rgba(0, 0, 0, 0.12);
           }
+          
+          fieldset label:active {
+            background-color: var(--secondary-dark);
+            color: var(--on-secondary-dark);
+            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
+          }
+          
+        fieldset input {
+          opacity: 0;
+        }
       
+      .quiz-option {
+        height: 45px;
+      }
+        
   /* Question feedback display */
   
     .question-feedback-display {

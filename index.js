@@ -42,9 +42,6 @@ function handleStartingDisplay() {
     // ... Build the question list
     questionList = buildQuestionList(quizDataGlobal.length);
     
-    console.log("handleStartingDisplay");
-    console.log(questionList);
-
     // Display a quiz question
     renderQuizDisplay(questionList);
 
@@ -169,10 +166,7 @@ function renderQuizDisplay(questionList) {
       
     // Choose the next question (aka the next correct answer)
     let correctAnswer = questionList.pop();
-    
-    console.log("renderQuizForm");
-    console.log(`correctAnswer: ${correctAnswer}`);
-    
+
     // Select the rest of the question options
     let quizOptions = selectQuizOptions(correctAnswer, 4, quizDataGlobal.length);
     
@@ -185,7 +179,7 @@ function renderQuizDisplay(questionList) {
         </legend>
         <div class="fieldset-flex-container"></div>
       </fieldset>
-      <div role="button" class="md-whiteframe-8dp answer-required-alert
+      <div tabindex="0" role="button" class="md-whiteframe-8dp answer-required-alert
         js-answer-required-alert">You must select an answer.
         <i class="material-icons">error</i>
       </div>
@@ -232,7 +226,7 @@ function renderQuizDisplay(questionList) {
             <div class="quiz-option-container">
               <input type="radio" name="answer" 
                        id="${index}" value="${index}" required>
-              <label class="md-whiteframe-4dp quiz-option js-quiz-option"
+              <label tabindex="0" class="md-whiteframe-4dp quiz-option js-quiz-option"
                      for="${index}">${quizDataGlobal[index].companyName}</label>
             </div>`;
       
@@ -276,7 +270,7 @@ function handleQuizAnswer() {
   
   });
   
-  // Provide two methods for removing the "answer required" alert:
+  // Provide three methods for removing the "answer required" alert:
     // Option 1: Select an answer
     $('main').on('click', '.js-quiz-option', function(event) {
       $('.js-answer-required-alert').toggle(false);
@@ -285,6 +279,29 @@ function handleQuizAnswer() {
     $('main').on('click', '.js-answer-required-alert', function(event) {
       $('.js-answer-required-alert').toggle(false);
     });
+    // Option 3: Keydown click on the alert itself
+    $('main').on('keydown', '.js-answer-required-alert', function(event) {
+      
+      // If the user presses "spacebar" or "enter" keys...
+      if ([13,32].includes(event.keyCode)) {
+        
+        //Click the radio button underlying the label
+       $('.js-answer-required-alert').toggle(false);        
+      }
+      
+    });
+    
+  // Handle label presses, to enable keyboard selection of quiz options
+  $('main').on('keydown', '.quiz-option', function(event) {
+      
+      // If the user presses "spacebar" or "enter" keys...
+      if ([13,32].includes(event.keyCode)) {
+        
+        //Click the radio button underlying the label
+        $(`input#${this.htmlFor}`).click();        
+      }
+
+  });
   
 }
 

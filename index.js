@@ -300,6 +300,9 @@ function handleQuizAnswer() {
       // If the user presses "spacebar" or "enter" keys...
       if ([13,32].includes(event.keyCode)) {
         
+        // Clear the "answer-required-alert", if visible
+        $('.js-answer-required-alert').toggle(false);
+        
         //Click the radio button underlying the label
         $(`input#${this.htmlFor}`).click();        
       }

@@ -170,6 +170,9 @@ function renderQuizDisplay(questionList) {
     // Select the rest of the question options
     let quizOptions = selectQuizOptions(correctAnswer, 4, quizDataGlobal.length);
     
+    // Shuffle the quiz options
+    quizOptions = shuffleArray(quizOptions);
+    
     // Build the Quiz Form content
     // NOTE: The correct answer is passed out via the submit button's name
     let quizFormHTML = `

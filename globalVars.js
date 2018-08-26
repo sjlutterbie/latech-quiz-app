@@ -55,7 +55,7 @@ const quizDataGlobal = [
  companyName: 'TaskUs',
  companyWebsite: 'https://www.taskus.com/',
  companyDescription: 'TaskUs provides next generation customer experience that powers the world\'s most disruptive companies through the partnership of amazing people and innovative technology.',
- companyLogo: 'taskus-logo.png',
+ companyLogo: 'taskus-logo.jpg',
  companyQuestion: 'Who is providing a next generation customer experience platform?'},
 {
  companyName: 'Fair',
@@ -289,7 +289,7 @@ companyName: 'Reformation',
  companyName: 'Watch Gang',
  companyWebsite: 'https://www.watchgang.com/',
  companyDescription: 'Watch Gang is a subscription-based curation and content company for watch lovers.',
- companyLogo: 'watchgang-logo.png',
+ companyLogo: 'watchgang-logo.jpg',
  companyQuestion: 'Who created a subscription-based curation and content company for watch lovers?'},
 {
  companyName: 'WebJoint',

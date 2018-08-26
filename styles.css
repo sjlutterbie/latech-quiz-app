@@ -141,6 +141,11 @@ body {
       background-color: var(--primary-dark);
       color: var(--on-primary-dark);
     }
+    
+    button:focus, input[type="submit"]:focus {
+      background-color: var(--primary-dark);
+      color: var(--on-primary-dark);
+    }
   
   /* Starting display */
   
@@ -281,6 +286,8 @@ body {
     .question-feedback-display img {
       width: 100px;
       float: right;
+      border: 1px solid var(--secondary-light);
+      margin-left: 5px;
     }
     
     

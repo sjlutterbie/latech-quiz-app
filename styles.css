@@ -121,7 +121,7 @@ body {
   
   h2 {
     text-align: center;
-    margin: 0px auto 5px auto;
+    margin: 0px auto 8px auto;
     font-size: 18px;
     width: 94.17%;
     padding: 8px 0px;
@@ -171,6 +171,10 @@ body {
       margin: 0px 8px;
       text-align: center;
       border-radius: 4px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      align-items: center;
     }
     
   /* Quiz form */
@@ -229,7 +233,7 @@ body {
           width: 100%;
           background-color: var(--secondary-light);
           color: var(--on-secondary-light);
-          margin: 10px 0px 10px 0px;
+          margin: 8px 0px;
           border-radius: 4px;
         }
         
@@ -244,7 +248,6 @@ body {
           .fieldset-flex-container input[type="radio"]:active+label {
             background-color: var(--secondary-dark);
             color: var(--on-secondary-dark);
-            border: 2px solid red; /* TEMP DESIGN */
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
               0px 6px 10px 0px rgba(0, 0, 0, 0.14),
               0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
@@ -337,13 +340,85 @@ body {
 footer {
   z-index: 8;
   flex-shrink: 0;
-  padding: 5px;
+  padding: 8px;
   text-align: center;
   background: var(--primary-dark);
   color: var(--on-primary-dark);
 }
 
 /* ===LARGE SCREEN ADJUSTMENTS=== */
+
+@media only screen and (min-width: 480px) {
+  
+/* ================================ */  
+  
+h2 {
+    width: 74.22%;
+  }
+  
+  p {
+    width: 74.22%;
+  }
+  
+  button, input[type="submit"] {
+    width: 22.67%;
+  }
+    
+  /* Starting display */
+  
+    .starting-display {
+      width: 94.17%;
+    }
+    
+  /* Quiz form */
+  
+    .quiz-form-container {
+      width: 94.17%;
+    }
+    
+      .quiz-form {
+        width: 94.17%;
+      }
+      
+        fieldset {
+          width: 100%;
+        }
+      
+        .quiz-option-container {
+          width: 74.22%;
+        }
+        
+    .answer-required-alert {
+      width: 74.22%;
+    }
+    
+
+  /* Question feedback display */
+  
+    .question-feedback-display {
+      width: 94.17%;
+    }
+
+    .question-feedback-display img {
+      width: 22.67%;
+    }
+    
+
+    .question-feedback-display p {
+      width: 74.22%;
+    }
+    
+    
+  /* Final results disply */
+  
+    .final-results-display {
+      width: 94.17%;
+    }
+
+/* ================================= */  
+  
+}
+
 
 @media only screen and (min-width: 550px) {
  

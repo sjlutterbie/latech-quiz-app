@@ -364,7 +364,30 @@ footer {
   text-align: center;
   background: var(--primary-dark);
   color: var(--on-primary-dark);
+  font-size: 18px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
 }
+
+  footer a {
+    text-decoration: none;
+    color: #fff;
+    line-height: 18px;
+    height: 18px;
+  }
+  
+  footer a:visited {
+    color: #fff;
+  }
+
+  footer .material-icons {
+    font-size: 18px;
+    line-height: 18px;
+    display: inline;
+  }
+
 
 /* ===LARGE SCREEN ADJUSTMENTS=== */
 

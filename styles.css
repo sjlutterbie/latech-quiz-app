@@ -77,7 +77,6 @@ body {
       order: 1;
       background-color: var(--primary-dark);
       color: var(--on-primary-dark);
-      /* width: 100%; */
       flex-grow: 1;
     }
       

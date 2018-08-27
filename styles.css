@@ -179,6 +179,11 @@ body {
       color: #000;
       padding: 10px;
       border-radius: 5px;
+      margin-left: 8px;
+      margin-right: 8px;
+      display: flex;
+      flex-flow: row;
+      justify-content: center;
     }
     
       h2 {
@@ -200,13 +205,17 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 90%;
-        margin: auto;
+        justify-content: center;
+        width: 94.17%;
+        margin-left: 8px;
+        margin-right: 8px;
         text-align: center;
       }
       
         fieldset {
-          width: 100%;
+          width: 94.17%;
+          margin-left: 8px;
+          margin-right: 8px;
           border: none;
         }
       
@@ -216,6 +225,13 @@ body {
           border: none;
           padding: 0px;
           flex-grow: 1;
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+          justify-content: center;
+          width: 94.17%;
+          margin-left: 8px;
+          margin-right: 8px;
         }
         
         
@@ -224,10 +240,9 @@ body {
           flex-direction: column;
           justify-content: center;
           align-content: center;
-          width: 100%;
           background-color: var(--secondary-light);
           color: var(--on-secondary-light);
-          margin: 10px 0px 10px 0px;
+          margin: 8px 0px 8px 0px;
           border-radius: 4px;
         }
         
@@ -256,10 +271,16 @@ body {
         .fieldset-flex-container input {
           display: none;
         }
-      
-      .quiz-option {
-        height: 45px;
+        
+      .quiz-option-container {
+        width: 51.54%;
+        margin-left: 8px;
+        margin-right: 8px;
       }
+      
+        .quiz-option {
+          height: 45px;
+        }
       
     .answer-required-alert {
       background-color: var(--alert-color);

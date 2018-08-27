@@ -229,7 +229,7 @@ function renderQuizDisplay(questionList) {
             <div class="quiz-option-container">
               <input type="radio" name="answer" 
                        id="${index}" value="${index}" required>
-              <label tabindex="0" class="md-whiteframe-4dp quiz-option js-quiz-option"
+              <label tabindex="0" class=" quiz-option js-quiz-option"
                      for="${index}">${quizDataGlobal[index].companyName}</label>
             </div>`;
       

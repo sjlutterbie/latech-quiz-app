@@ -138,6 +138,7 @@ body {
     border: none;
     height: 45px;
     width: 22.67%;
+    min-width: 86px;
     margin: 8px;
     border-radius: 4px;
   }
@@ -383,6 +384,11 @@ h2 {
         fieldset {
           width: 100%;
         }
+        
+        fieldset h2 {
+          margin-left: auto;
+          margin-right: auto;
+        }
       
         .quiz-option-container {
           width: 74.22%;
@@ -537,7 +543,7 @@ h2 {
       }
   
       .question-feedback-display img {
-        width: 21.35%;
+        width: 33.49%;
       }
       
   
@@ -552,10 +558,24 @@ h2 {
         width: 71.99%;
       }
 
-
-
-      
 }
+
+@media only screen and (min-width: 730px) {
+  
+  .question-feedback-display p {
+    width: 94.17%;
+  }
+  
+}
+
+@media only screen and (min-width: 960px) {
+  
+  .question-feedback-display p {
+    width: 73%%;
+  }
+  
+}
+
 
 @media only screen and (max-height: 330px ) {
   .fieldset-flex-container {

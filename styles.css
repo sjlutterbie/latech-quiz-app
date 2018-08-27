@@ -157,7 +157,7 @@ body {
     }
     
     button:focus, input[type="submit"]:focus {
-      background-color: var(--primary-dark);
+      background-color: var(--primary-color);
       color: var(--on-primary-dark);
     }
   
@@ -254,9 +254,20 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
           }
           
+          .fieldset-flex-container input[type="radio"]:focus+label {
+            background-color: var(--secondary-dark);
+            color: var(--on-secondary-dark);
+            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
+          }
+          
           .fieldset-flex-container input[type="radio"]:checked+label {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
+            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
           }
           
         .fieldset-flex-container input {
@@ -266,6 +277,14 @@ body {
       .quiz-option {
         height: 45px;
       }
+      
+      .quiz-option:focus {
+            background-color: var(--secondary-color);
+            color: var(--on-secondary-color);
+            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
+          }
       
     .answer-required-alert {
       background-color: var(--alert-color);

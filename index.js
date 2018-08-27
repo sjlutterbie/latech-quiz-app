@@ -356,9 +356,8 @@ function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer, questionLi
   let feedbackDisplayHTML = `
     <div class="md-whiteframe-15dp question-feedback-display">
       <h2>${feedbackText}</h2>
-      <p><img src="./images/${quizDataGlobal[correctAnswer].companyLogo}"></img>
-      ${quizDataGlobal[correctAnswer].companyDescription}
-      </p>
+      <img src="./images/${quizDataGlobal[correctAnswer].companyLogo}"></img>
+      <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
       <button role="button" class="md-whiteframe-4dp next-question-button js-next-question-button">Continue</button>
       ${finishButtonHTML}
     </div>`;

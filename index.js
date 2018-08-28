@@ -358,8 +358,8 @@ function renderFeedbackDisplay(boolCorrect, answerVal, correctAnswer, questionLi
       <h2>${feedbackText}</h2>
       <img src="./images/${quizDataGlobal[correctAnswer].companyLogo}" alt="${quizDataGlobal[correctAnswer].companyName}'s logo"></img>
       <p>${quizDataGlobal[correctAnswer].companyDescription}</p>
-      <button role="button" class="md-whiteframe-4dp next-question-button js-next-question-button">Continue</button>
-      ${finishButtonHTML}
+      <div class="question-feedback-buttons"><button role="button" class="md-whiteframe-4dp next-question-button js-next-question-button">Continue</button>
+      ${finishButtonHTML}</div>
     </div>`;
   
   // Update DOM

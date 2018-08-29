@@ -210,17 +210,19 @@ body {
           align-items: center;
         }
 
-  .quiz-option-container {
+  .quiz-form label {
+    display: flex;
     background-color: var(--secondary-light);
     color: var(--on-secondary-light);
     border-radius: 4px;
     padding: 4px;
     margin: 4px;
-    flex-basis: 100%;
-    
+    flex: 0 0 100%;
+    align-content: stretch;
+    justify-content: center;
   }
   
-  .quiz-option-container:hover {
+  .quiz-form label:hover {
     background-color: var(--secondary-color);
     color: var(--on-secondary-color);
     box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -414,29 +416,15 @@ footer {
         flex-flow: column;
         justify-content: center;
         align-items: center;
+        max-width: 550px;
       }
       
         .quiz-form {
           width: 100%;
         }
         
-/*
-fieldset {
-            width: 100%;
-          }
-          
-          .fieldset-flex-container {
-            flex-flow: row wrap;
-            align-items: center;
-            justify-content: center;
-          }
-          
-          
-          .quiz-option-container {
-            width: 45%;
-          }
-          
-*/          
+
+
       .answer-required-alert {
         width: 45%;
       }
@@ -455,18 +443,7 @@ fieldset {
     .fieldset-flex-container {
     flex-flow: row wrap;
   }
-  
-/*
-  div.quiz-option-container {
-    width: 45%;
-    font-size: 12px;
-  }
-  
-  button, input[type="submit"], .quiz-option {
-    height: 30px;
-  } 
-  
-*/
+
 
   .quiz-form-container {
         display: flex;
@@ -475,15 +452,7 @@ fieldset {
         align-items: center;
       }
 
-/*      
-  .quiz-form h2 {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 4px;
-    padding-bottom: 0px;
-  }
-*/
+
     .answer-required-alert {
         width: 45%;
         padding-top: 4px;

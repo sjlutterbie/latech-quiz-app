@@ -226,11 +226,10 @@ function renderQuizDisplay(questionList) {
       
       // Build the HTML
       let quizOptionHTML = `
-            <div class="quiz-option-container">
+              <label for="${index}" >
               <input class="js-input-radio" type="radio" id="${index}" name="answer" value="${index}" required>
-              <label for="${index}" >${quizDataGlobal[index].companyName}</label>
-                
-            </div>`;
+              ${quizDataGlobal[index].companyName}</label>
+      `;
       
       //Update DOM
       $('div.fieldset-flex-container').append(quizOptionHTML);

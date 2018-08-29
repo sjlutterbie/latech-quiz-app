@@ -364,6 +364,10 @@ footer {
     0px 2px 16px 1px rgba(0, 0, 0, 0.12); 
   }
   
+  .starting-display {
+    max-width: 550px;
+  }
+  
     .site-title {
       z-index: none;
       order: 1;

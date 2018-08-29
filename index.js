@@ -227,10 +227,9 @@ function renderQuizDisplay(questionList) {
       // Build the HTML
       let quizOptionHTML = `
             <div class="quiz-option-container">
-              <input type="radio" name="answer" 
-                       id="${index}" value="${index}" required>
-              <label tabindex="0" class=" quiz-option js-quiz-option"
-                     for="${index}">${quizDataGlobal[index].companyName}</label>
+              <input class="js-input-radio" type="radio" id="${index}" name="answer" value="${index}" required>
+              <label for="${index}" >${quizDataGlobal[index].companyName}</label>
+                
             </div>`;
       
       //Update DOM
@@ -275,7 +274,7 @@ function handleQuizAnswer() {
   
   // Provide three methods for removing the "answer required" alert:
     // Option 1: Select an answer
-    $('main').on('click', '.js-quiz-option', function(event) {
+    $('main').on('change', '.js-input-radio', function(event){
       $('.js-answer-required-alert').toggle(false);
     });
     // Option 2: Click the alert itself
@@ -294,20 +293,6 @@ function handleQuizAnswer() {
       
     });
     
-  // Handle label presses, to enable keyboard selection of quiz options
-  $('main').on('keydown', '.quiz-option', function(event) {
-      
-      // If the user presses "spacebar" or "enter" keys...
-      if ([13,32].includes(event.keyCode)) {
-        
-        // Clear the "answer-required-alert", if visible
-        $('.js-answer-required-alert').toggle(false);
-        
-        //Click the radio button underlying the label
-        $(`input#${this.htmlFor}`).click();        
-      }
-
-  });
   
 }
 

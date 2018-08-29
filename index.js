@@ -182,7 +182,7 @@ function renderQuizDisplay(questionList) {
         </legend>
         <div class="fieldset-flex-container"></div>
       </fieldset>
-      <div tabindex="0" role="button" class="md-whiteframe-8dp answer-required-alert
+      <div class="answer-required-alert
         js-answer-required-alert">You must select an answer.
         <i class="material-icons">error</i>
       </div>
@@ -271,28 +271,10 @@ function handleQuizAnswer() {
   
   });
   
-  // Provide three methods for removing the "answer required" alert:
-    // Option 1: Select an answer
+  // The "answer required" alert disappears when an answer is selected
     $('main').on('change', '.js-input-radio', function(event){
       $('.js-answer-required-alert').toggle(false);
     });
-    // Option 2: Click the alert itself
-    $('main').on('click', '.js-answer-required-alert', function(event) {
-      $('.js-answer-required-alert').toggle(false);
-    });
-    // Option 3: Keydown click on the alert itself
-    $('main').on('keydown', '.js-answer-required-alert', function(event) {
-      
-      // If the user presses "spacebar" or "enter" keys...
-      if ([13,32].includes(event.keyCode)) {
-        
-        //Click the radio button underlying the label
-       $('.js-answer-required-alert').toggle(false);        
-      }
-      
-    });
-    
-  
 }
 
   function processQuizAnswer(answerVal, correctAnswer) {

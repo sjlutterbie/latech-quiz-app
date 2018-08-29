@@ -243,10 +243,6 @@ body {
       align-items: center;
     }
 
-    .answer-required-alert:hover {
-      background-color: var(--alert-dark);
-      color: var(--on-alert-dark);
-    }
         
   /* Question feedback display */
   
@@ -424,11 +420,11 @@ footer {
         }
         
 
-
+/*
       .answer-required-alert {
-        width: 45%;
+        width: 55%;
       }
-
+*/
 }
 
 @media only screen and (max-height: 400px ) {

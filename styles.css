@@ -204,6 +204,10 @@ body {
           border: none;
           padding: 8px 0px;
           flex-grow: 1;
+          display: flex;
+          flex-flow: row wrap;
+          justify-content: center;
+          align-items: center;
         }
 
   .quiz-option-container {
@@ -212,6 +216,7 @@ body {
     border-radius: 4px;
     padding: 4px;
     margin: 4px;
+    flex-basis: 100%;
     
   }
   
@@ -240,70 +245,6 @@ body {
       background-color: var(--alert-dark);
       color: var(--on-alert-dark);
     }
-
-
-/*        
-        .quiz-option-container {
-          display: inline;
-          background-color: var(--secondary-light);
-          color: var(--on-secondary-light);
-        }
-        
-
-        
-        
-          .quiz-option-container label:hover {
-            background-color: var(--secondary-color);
-            color: var(--on-secondary-color);
-            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-              0px 1px 18px 0px rgba(0, 0, 0, 0.12);
-          }
-          
-          .fieldset-flex-container input[type="radio"]:active+label {
-            background-color: var(--secondary-dark);
-            color: var(--on-secondary-dark);
-            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
-          }
-          
-          .fieldset-flex-container input[type="radio"]:focus+label {
-            background-color: var(--secondary-dark);
-            color: var(--on-secondary-dark);
-            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
-          }
-          
-          .fieldset-flex-container input[type="radio"]:checked+label {
-            background-color: var(--secondary-color);
-            color: var(--on-secondary-color);
-            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
-          }
-          
-         .fieldset-flex-container input {
-          display: none;
-        }
-      
-      .quiz-option {
-        height: 45px;
-      }
-      
-      .quiz-option:focus {
-            background-color: var(--secondary-color);
-            color: var(--on-secondary-color);
-            box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
-              0px 6px 10px 0px rgba(0, 0, 0, 0.14),
-              0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
-          }
-          
-*/
-
-
-  
         
   /* Question feedback display */
   
@@ -404,7 +345,9 @@ footer {
 /* ===RESPONSIVE ADJUSTMENTS=== */
 
 @media only screen and (min-width: 480px) {
-
+  .quiz-option-container {
+    flex-basis: 45%;
+  }
 }
 
 @media only screen and (min-width: 600px) {

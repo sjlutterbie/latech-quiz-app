@@ -132,6 +132,7 @@ body {
     height: 45px;
     border-radius: 4px;
     min-width: 65px;
+    margin-top: 4px;
   }
     
     button:hover, input[type="submit"]:hover {
@@ -203,30 +204,55 @@ body {
           border: none;
           padding: 8px 0px;
           flex-grow: 1;
-          display: flex;
-          flex-flow: column nowrap;
-          justify-content: center;
-          align-items: center;
         }
-        
+
+  .quiz-option-container {
+    background-color: var(--secondary-light);
+    color: var(--on-secondary-light);
+    border-radius: 4px;
+    padding: 4px;
+    margin: 4px;
+    
+  }
+  
+  .quiz-option-container:hover {
+    background-color: var(--secondary-color);
+    color: var(--on-secondary-color);
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+      0px 6px 10px 0px rgba(0, 0, 0, 0.14),
+      0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  }
+  
+
+    .answer-required-alert {
+      background-color: var(--alert-color);
+      color: var(--on-alert-color);
+      border-radius: 4px;
+      padding: 4px;
+      margin: 4px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .answer-required-alert:hover {
+      background-color: var(--alert-dark);
+      color: var(--on-alert-dark);
+    }
+
+
+/*        
         .quiz-option-container {
-          width: 74.22%;
-          margin: 0px 8px;
-        }
-        
-        .fieldset-flex-container label {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-content: center;
-          width: 100%;
+          display: inline;
           background-color: var(--secondary-light);
           color: var(--on-secondary-light);
-          margin: 8px 0px;
-          border-radius: 4px;
         }
         
-          .fieldset-flex-container label:hover {
+
+        
+        
+          .quiz-option-container label:hover {
             background-color: var(--secondary-color);
             color: var(--on-secondary-color);
             box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
@@ -258,7 +284,7 @@ body {
               0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
           }
           
-        .fieldset-flex-container input {
+         .fieldset-flex-container input {
           display: none;
         }
       
@@ -273,25 +299,10 @@ body {
               0px 6px 10px 0px rgba(0, 0, 0, 0.14),
               0px 1px 18px 0px rgba(0, 0, 0, 0.12); 
           }
-      
-    .answer-required-alert {
-      background-color: var(--alert-color);
-      color: var(--on-alert-color);
-      border-radius: 4px;
-      margin: 0px 8px 8px 8px;
-      padding: 8px 0px;
-      z-index: 20;
-      display: flex;
-      flex-flow: row nowrap;
-      justify-content: center;
-      align-items: center;
-      width: 74.22%;
-    }
-    
-    .answer-required-alert:hover {
-      background-color: var(--alert-dark);
-      color: var(--on-alert-dark);
-    }
+          
+*/
+
+
   
         
   /* Question feedback display */
@@ -462,7 +473,8 @@ footer {
           width: 100%;
         }
         
-          fieldset {
+/*
+fieldset {
             width: 100%;
           }
           
@@ -477,7 +489,7 @@ footer {
             width: 45%;
           }
           
-          
+*/          
       .answer-required-alert {
         width: 45%;
       }
@@ -486,10 +498,18 @@ footer {
 
 @media only screen and (max-height: 400px ) {
 
+
+  .starting-display p {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  
+
     .fieldset-flex-container {
     flex-flow: row wrap;
   }
   
+/*
   div.quiz-option-container {
     width: 45%;
     font-size: 12px;
@@ -499,18 +519,16 @@ footer {
     height: 30px;
   } 
   
-  .starting-display p {
-    margin-top: 4px;
-    margin-bottom: 4px;
-  }
-  
+*/
+
   .quiz-form-container {
         display: flex;
         flex-flow: column;
         justify-content: center;
         align-items: center;
       }
-      
+
+/*      
   .quiz-form h2 {
     width: 100%;
     margin-left: auto;
@@ -518,7 +536,7 @@ footer {
     margin-bottom: 4px;
     padding-bottom: 0px;
   }
-    
+*/
     .answer-required-alert {
         width: 45%;
         padding-top: 4px;

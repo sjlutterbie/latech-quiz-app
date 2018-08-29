@@ -227,10 +227,9 @@ function renderQuizDisplay(questionList) {
       // Build the HTML
       let quizOptionHTML = `
             <div class="quiz-option-container">
-              <input type="radio" name="answer" 
-                       id="${index}" value="${index}" required>
-              <label tabindex="0" class=" quiz-option js-quiz-option"
-                     for="${index}">${quizDataGlobal[index].companyName}</label>
+              <input type="radio" id="${index}" name="answer" value="${index}" required>
+              <label for="${index}" >${quizDataGlobal[index].companyName}</label>
+                
             </div>`;
       
       //Update DOM
@@ -294,7 +293,7 @@ function handleQuizAnswer() {
       
     });
     
-  // Handle label presses, to enable keyboard selection of quiz options
+/*  // Handle label presses, to enable keyboard selection of quiz options
   $('main').on('keydown', '.quiz-option', function(event) {
       
       // If the user presses "spacebar" or "enter" keys...
@@ -308,6 +307,7 @@ function handleQuizAnswer() {
       }
 
   });
+*/
   
 }
 

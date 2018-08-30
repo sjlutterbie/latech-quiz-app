@@ -228,7 +228,7 @@ function renderQuizDisplay(questionList) {
       let quizOptionHTML = `
               <label for="${index}" >
               <input class="js-input-radio" type="radio" id="${index}" name="answer" value="${index}" required>
-              ${quizDataGlobal[index].companyName}</label>
+              &nbsp;${quizDataGlobal[index].companyName}</label>
       `;
       
       //Update DOM

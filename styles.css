@@ -62,6 +62,16 @@ body {
   background-color: #fff;
 }
 
+/* Text only intended only for screen readers */
+.reader-only {
+  
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
 /* === BASE LAYOUT === */
 
 /* Header */
@@ -419,12 +429,6 @@ footer {
           width: 100%;
         }
         
-
-/*
-      .answer-required-alert {
-        width: 55%;
-      }
-*/
 }
 
 @media only screen and (max-height: 400px ) {
